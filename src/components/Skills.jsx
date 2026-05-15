@@ -1,99 +1,67 @@
-import { CodeIcon, LayersIcon, DatabaseIcon, SmartphoneIcon, ToolIcon, CpuIcon } from './Icons'
-
-const skillsData = [
-  { category: 'Languages', icon: <CodeIcon size={18} />, tools: ['C', 'C++', 'JavaScript', 'TypeScript', 'Python'] },
-  { category: 'Frontend', icon: <LayersIcon size={18} />, tools: ['React', 'Next.js', 'Remix', 'Redux', 'Zustand', 'Tailwind', 'Bootstrap', 'MUI'] },
-  { category: 'Backend', icon: <CpuIcon size={18} />, tools: ['Node.js', 'Express.js', 'NestJS', 'FastAPI', 'JWT', 'Redis', 'Zod'] },
-  { category: 'Database', icon: <DatabaseIcon size={18} />, tools: ['MongoDB', 'Mongoose', 'PostgreSQL', 'Prisma', 'Firebase'] },
-  { category: 'Mobile', icon: <SmartphoneIcon size={18} />, tools: ['React Native', 'Expo', 'SQLite'] },
-  { category: 'DevOps & Tools', icon: <ToolIcon size={18} />, tools: ['Git', 'GitHub', 'Vite', 'Postman', 'VS Code', 'Linux'] },
-]
-
-const proficiency = [
-  { skill: 'Writing Code', level: 90, color: 'bg-cyan-500' },
-  { skill: 'Googling Errors', level: 99, color: 'bg-orange-500' },
-  { skill: 'Stack Overflow Research', level: 87, color: 'bg-purple-500' },
-  { skill: 'Staying Calm Under Pressure', level: 95, color: 'bg-pink-500' },
-  { skill: 'Fixing My Own Bugs', level: 78, color: 'bg-green-500' },
-  { skill: 'Meeting Deadlines', level: 60, color: 'bg-yellow-500' },
+const categories = [
+  { name: 'Core', color: 'from-orange-500/20 to-orange-500/5', border: 'border-orange-500/30', tools: ['JavaScript (ES6+)', 'TypeScript', 'Python', 'C++'] },
+  { name: 'Frontend', color: 'from-cyan-500/20 to-cyan-500/5', border: 'border-cyan-500/30', tools: ['React 18', 'Next.js 14', 'Tailwind CSS', 'Framer Motion', 'Zustand'] },
+  { name: 'Backend', color: 'from-purple-500/20 to-purple-500/5', border: 'border-purple-500/30', tools: ['Node.js', 'Express', 'NestJS', 'FastAPI', 'GraphQL'] },
+  { name: 'Database', color: 'from-pink-500/20 to-pink-500/5', border: 'border-pink-500/30', tools: ['PostgreSQL', 'MongoDB', 'Redis', 'Prisma ORM'] },
+  { name: 'Architecture', color: 'from-green-500/20 to-green-500/5', border: 'border-green-500/30', tools: ['Microservices', 'REST APIs', 'WebSockets', 'CI/CD'] },
 ]
 
 const Skills = () => {
   return (
-    <section id="skills" className="bg-[#0f0f0f] py-32 relative overflow-hidden">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-24 bg-gradient-to-b from-transparent to-cyan-500/40" />
-      <div className="absolute bottom-20 right-10 w-80 h-80 bg-cyan-600 rounded-full blur-[160px] opacity-10" />
+    <section id="skills" className="bg-[#030303] py-32 relative overflow-hidden">
+      {/* Background Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-600/10 rounded-full blur-[150px] pointer-events-none" />
 
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="flex items-center gap-3 mb-5 justify-center">
-          <span className="text-cyan-400 text-xs uppercase tracking-[0.2em] font-bold">Tech Stack</span>
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        
+        <div className="text-center mb-24">
+          <p className="text-cyan-400 text-sm uppercase tracking-[0.3em] font-bold mb-6 font-display">
+            The Arsenal
+          </p>
+          <h2 className="text-5xl md:text-7xl font-display font-black leading-tight tracking-tighter">
+            Technologies I <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Command.</span>
+          </h2>
         </div>
-        <h2 className="text-white text-4xl md:text-[52px] font-black text-center mb-5 leading-tight">
-          My Skills &amp;{' '}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Stack</span>
-        </h2>
-        <p className="text-white/35 text-center text-base mb-20 max-w-lg mx-auto leading-relaxed">
-          I have touched a lot of technologies. Some have touched me back (with bugs). Here is the full list.
-        </p>
 
-        {/* Table layout */}
-        <div className="bg-white/[0.03] border border-white/[0.07] rounded-3xl overflow-hidden">
-          <div className="grid grid-cols-3 bg-white/[0.04] border-b border-white/[0.07] px-8 py-5">
-            <span className="text-white/30 text-xs font-bold uppercase tracking-[0.18em]">Category</span>
-            <span className="text-white/30 text-xs font-bold uppercase tracking-[0.18em] col-span-2">Tools & Tech</span>
-          </div>
-          {skillsData.map((row, i) => (
-            <div
-              key={i}
-              className="grid grid-cols-3 px-8 py-6 border-b border-white/[0.04] last:border-0 hover:bg-white/[0.03] transition-colors duration-200 group"
+        {/* Scattered / Masonry-like Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {categories.map((cat, i) => (
+            <div 
+              key={i} 
+              className={`bg-[#080808] border ${cat.border} rounded-[2rem] p-8 md:p-10 relative overflow-hidden group hover:scale-[1.02] transition-transform duration-500`}
             >
-              <div className="flex items-center gap-3">
-                <span className="text-white/30 group-hover:text-cyan-400 transition-colors duration-200">{row.icon}</span>
-                <span className="text-white/70 font-semibold text-sm">{row.category}</span>
-              </div>
-              <div className="col-span-2 flex flex-wrap gap-2 items-center">
-                {row.tools.map(tool => (
-                  <span
-                    key={tool}
-                    className="bg-white/[0.06] border border-white/[0.08] text-white/55 text-xs px-3.5 py-1.5 rounded-xl font-medium hover:bg-cyan-500/15 hover:border-cyan-500/30 hover:text-cyan-300 transition-all duration-200 cursor-default"
-                  >
-                    {tool}
-                  </span>
-                ))}
+              <div className={`absolute inset-0 bg-gradient-to-br ${cat.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+              
+              <div className="relative z-10">
+                <h3 className="text-2xl font-display font-bold text-white mb-8 tracking-wide">
+                  {cat.name}
+                </h3>
+                
+                <div className="flex flex-wrap gap-3">
+                  {cat.tools.map(tool => (
+                    <span 
+                      key={tool} 
+                      className="bg-black border border-white/10 text-white/70 px-4 py-2.5 rounded-full text-sm font-medium hover:border-white/50 hover:text-white transition-colors duration-300 shadow-xl"
+                    >
+                      {tool}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           ))}
-        </div>
 
-        {/* Warning note */}
-        <div className="mt-10 bg-yellow-500/[0.07] border border-yellow-500/15 rounded-2xl p-6 text-center">
-          <p className="text-yellow-400/70 text-sm font-medium">
-            I also know jQuery. We don't talk about that.
-          </p>
-        </div>
-
-        {/* Proficiency bars */}
-        <div className="mt-14">
-          <h3 className="text-white font-black text-2xl md:text-3xl text-center mb-10">
-            Proficiency <span className="text-white/30 font-light">(Honest Edition)</span>
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {proficiency.map((item, i) => (
-              <div key={i} className="bg-white/[0.03] border border-white/[0.07] rounded-2xl p-5">
-                <div className="flex justify-between mb-3">
-                  <span className="text-white/70 text-sm font-medium">{item.skill}</span>
-                  <span className="text-white/40 text-sm font-bold">{item.level}%</span>
-                </div>
-                <div className="bg-white/[0.07] rounded-full h-1.5">
-                  <div
-                    className={`${item.color} h-1.5 rounded-full transition-all duration-1000`}
-                    style={{ width: `${item.level}%` }}
-                  />
-                </div>
-              </div>
-            ))}
+          {/* Special Brutalist "Honesty" Card */}
+          <div className="bg-orange-500 border border-orange-400 rounded-[2rem] p-8 md:p-10 flex flex-col justify-center transform hover:rotate-2 transition-transform duration-500 text-black">
+            <h3 className="text-3xl font-display font-black mb-4 uppercase tracking-tighter">
+              99% Googling Errors.
+            </h3>
+            <p className="text-lg font-medium leading-relaxed opacity-90">
+              The other 1% is copy-pasting from Stack Overflow. I am just really fast at it. Don't tell my clients.
+            </p>
           </div>
         </div>
+
       </div>
     </section>
   )

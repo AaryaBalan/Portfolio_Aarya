@@ -1,159 +1,127 @@
-import {
-  GitHubIcon, LinkedInIcon, InstagramIcon, DownloadIcon,
-  ArrowRightIcon, SparkleIcon, CheckCircleIcon, TrendingUpIcon, ZapIcon
-} from './Icons'
+import { useState } from 'react'
+import { ArrowRightIcon, DownloadIcon, SparkleIcon, GitHubIcon, LinkedInIcon, InstagramIcon } from './Icons'
 
 const Hero = () => {
+  const [mouse, setMouse] = useState({ x: 0, y: 0 })
+
+  const handleMouseMove = (e) => {
+    // We want the raw screen coordinates for the spotlight effect
+    setMouse({ x: e.clientX, y: e.clientY })
+  }
+
+  // 3D rotation math based on mouse position relative to center
+  const rotateX = (mouse.y - window.innerHeight / 2) / 30
+  const rotateY = -(mouse.x - window.innerWidth / 2) / 30
+
   return (
-    <section id="home" className="min-h-screen bg-[#0a0a0a] flex items-center relative overflow-hidden pt-24">
-      {/* Background grid */}
-      <div
-        className="absolute inset-0 opacity-[0.035]"
+    <section 
+      id="home" 
+      className="min-h-screen bg-[#030303] flex items-center relative overflow-hidden pt-20"
+      onMouseMove={handleMouseMove}
+    >
+      {/* Massive Background Text - Text Stroke Effect */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden select-none opacity-[0.15]">
+        <h1 className="text-[22vw] font-display font-black leading-none text-stroke whitespace-nowrap tracking-tighter">
+          FULL STACK
+        </h1>
+      </div>
+
+      {/* Dynamic Spotlight that follows cursor */}
+      <div 
+        className="absolute inset-0 pointer-events-none opacity-60 transition-opacity duration-300 mix-blend-screen"
         style={{
-          backgroundImage: 'linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)',
-          backgroundSize: '64px 64px',
+          background: `radial-gradient(circle 600px at ${mouse.x}px ${mouse.y}px, rgba(249,115,22,0.12), transparent 80%)`
         }}
       />
-      {/* Gradient blobs */}
-      <div className="absolute top-20 right-[-5%] w-[560px] h-[560px] bg-purple-700 rounded-full blur-[150px] opacity-20" />
-      <div className="absolute bottom-0 left-[-5%] w-[440px] h-[440px] bg-orange-600 rounded-full blur-[130px] opacity-15" />
 
-      <div className="max-w-6xl mx-auto px-6 py-20 w-full">
-        <div className="flex flex-col lg:flex-row items-center gap-16">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full grid lg:grid-cols-12 gap-12 items-center">
+        
+        {/* Left Content: Huge Typography */}
+        <div className="lg:col-span-7 space-y-8 relative">
+          
+          <div className="inline-block overflow-hidden animate-[fadeIn_1s_ease-out_0.2s_both]">
+            <span className="inline-flex items-center gap-3 border border-white/10 bg-black/50 backdrop-blur-md rounded-full px-5 py-2.5">
+              <span className="w-2 h-2 bg-orange-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(249,115,22,0.8)]" />
+              <span className="text-xs uppercase tracking-[0.2em] font-bold text-white/70 font-display">
+                Available for impact
+              </span>
+            </span>
+          </div>
 
-          {/* Left content */}
-          <div className="flex-1 text-center lg:text-left">
-            {/* Availability badge */}
-            <div className="inline-flex items-center gap-2.5 bg-white/[0.05] border border-white/[0.1] rounded-full px-5 py-2.5 mb-10">
-              <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse flex-shrink-0" />
-              <span className="text-white/60 text-sm font-medium">Available for work — hire me before someone else does</span>
-            </div>
+          <h1 className="text-6xl md:text-[5.5rem] lg:text-[7rem] font-display font-black leading-[0.9] tracking-tighter animate-[fadeIn_1s_ease-out_0.4s_both]">
+            <span className="block text-white/30 hover:text-white transition-colors duration-500">I BUILD</span>
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 pb-2">EXPERIENCES</span>
+            <span className="block text-white filter drop-shadow-[0_0_30px_rgba(255,255,255,0.2)]">THAT SHOCK.</span>
+          </h1>
 
-            {/* Intro badge */}
-            <div className="flex items-center justify-center lg:justify-start gap-3 mb-5">
-              <span className="bg-orange-500 text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest">Hey</span>
-              <span className="text-white/50 text-base">I'm <strong className="text-white font-bold">Aarya Balan</strong></span>
-            </div>
+          <p className="text-lg md:text-xl text-white/50 max-w-lg font-light leading-relaxed animate-[fadeIn_1s_ease-out_0.6s_both]">
+            Not just another portfolio. A display of what happens when <strong className="text-white/90 font-medium">design meets logic</strong> and coffee meets late nights. No templates. Pure code.
+          </p>
 
-            {/* Headline */}
-            <h1 className="text-5xl md:text-6xl lg:text-[72px] font-black text-white leading-[1.04] mb-7">
-              I build{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-pink-500">full-stack</span>
-              <br />
-              stuff that<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400">actually works.</span>
-            </h1>
-
-            {/* Sub-headline */}
-            <p className="text-white/45 text-lg md:text-xl mb-11 max-w-lg mx-auto lg:mx-0 leading-relaxed">
-              Code, bugs, and late-night coffee keep it all running.
-              No Stack Overflow questions were harmed in the making of these projects.
-              <span className="text-orange-400/80 font-medium"> (Okay, maybe a few.)</span>
-            </p>
-
-            {/* Traits */}
-            <div className="flex flex-wrap gap-2.5 justify-center lg:justify-start mb-11">
-              {[
-                { label: 'Creative', icon: <SparkleIcon size={14} /> },
-                { label: 'Reliable', icon: <CheckCircleIcon size={14} /> },
-                { label: 'Efficient', icon: <ZapIcon size={14} /> },
-                { label: 'Always Growing', icon: <TrendingUpIcon size={14} /> },
-              ].map(t => (
-                <span key={t.label} className="text-white/50 text-sm border border-white/[0.1] px-4 py-1.5 rounded-full hover:border-orange-500/40 hover:text-white/80 transition-all duration-200 flex items-center gap-2">
-                  <span className="text-orange-400/70">{t.icon}</span>
-                  {t.label}
-                </span>
-              ))}
-            </div>
-
-            {/* CTAs */}
-            <div className="flex flex-wrap gap-4 justify-center lg:justify-start mb-14">
-              <a
-                href="#contact"
-                id="contact-cta-btn"
-                className="bg-white text-black font-bold px-8 py-4 rounded-2xl hover:bg-orange-500 hover:text-white transition-all duration-200 hover:scale-105 shadow-xl text-base flex items-center gap-2.5"
-              >
-                Contact me <ArrowRightIcon size={16} />
-              </a>
-              <a
-                href="#projects"
-                className="border border-white/[0.15] text-white font-semibold px-8 py-4 rounded-2xl hover:border-white/40 hover:bg-white/[0.05] transition-all duration-200 text-base"
-              >
-                See my work
-              </a>
-            </div>
-
-            {/* Socials */}
-            <div className="flex items-center gap-7 justify-center lg:justify-start">
+          {/* Interactive Button */}
+          <div className="flex flex-wrap gap-5 pt-4 animate-[fadeIn_1s_ease-out_0.8s_both]">
+            <a href="#projects" className="relative inline-flex group overflow-hidden rounded-full p-[1px]">
+              <span className="absolute inset-0 bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 rounded-full opacity-70 group-hover:opacity-100 animate-[spin_3s_linear_infinite]" />
+              <span className="relative inline-flex items-center justify-center gap-3 bg-black px-8 py-4.5 rounded-full text-sm font-bold uppercase tracking-[0.15em] font-display text-white transition-all duration-300 group-hover:bg-black/40 backdrop-blur-md">
+                Explore The Void <ArrowRightIcon size={16} />
+              </span>
+            </a>
+            
+            <div className="flex items-center gap-6 pl-4">
               {[
                 { label: 'GitHub', icon: <GitHubIcon size={20} /> },
                 { label: 'LinkedIn', icon: <LinkedInIcon size={20} /> },
-                { label: 'Instagram', icon: <InstagramIcon size={20} /> },
               ].map(s => (
-                <a key={s.label} href="#" aria-label={s.label} className="text-white/30 hover:text-white transition-colors duration-200 hover:scale-110 transform">
+                <a key={s.label} href="#" aria-label={s.label} className="text-white/30 hover:text-white transition-all duration-300 hover:scale-125 transform">
                   {s.icon}
                 </a>
               ))}
             </div>
           </div>
+        </div>
 
-          {/* Right — Profile card */}
-          <div className="flex-shrink-0 relative">
-            {/* Decorative rings */}
-            <div className="absolute -inset-10 border border-white/[0.04] rounded-3xl rotate-6" />
-            <div className="absolute -inset-10 border border-white/[0.04] rounded-3xl -rotate-3" />
+        {/* Right Content: Floating 3D Composition */}
+        <div className="lg:col-span-5 h-[600px] hidden lg:flex items-center justify-center perspective-1000 animate-[fadeIn_1.5s_ease-out_1s_both]">
+          <div 
+            className="w-[340px] h-[460px] bg-white/[0.02] border border-white/10 rounded-[2.5rem] backdrop-blur-3xl transform-style-3d transition-transform duration-300 ease-out flex flex-col items-center p-10 shadow-[0_0_80px_rgba(0,0,0,0.8)] relative"
+            style={{
+              transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`
+            }}
+          >
+            {/* Glow effects inside card */}
+            <div className="absolute -right-20 -top-20 w-48 h-48 bg-pink-500/20 rounded-full blur-[80px] pointer-events-none transform translate-z-[10px]" />
+            <div className="absolute -left-20 -bottom-20 w-48 h-48 bg-orange-500/20 rounded-full blur-[80px] pointer-events-none transform translate-z-[10px]" />
 
-            {/* Card */}
-            <div className="relative bg-white/[0.04] backdrop-blur-sm border border-white/[0.08] rounded-3xl p-9 flex flex-col items-center text-center w-[290px] hover:border-orange-500/25 transition-all duration-500 hover:shadow-2xl hover:shadow-orange-500/10">
-              {/* Avatar */}
-              <div className="relative mb-7">
-                <div className="w-28 h-28 rounded-2xl bg-gradient-to-br from-orange-400 to-pink-600 flex items-center justify-center shadow-2xl">
-                  {/* Developer silhouette */}
-                  <svg viewBox="0 0 80 80" width="56" height="56" fill="none">
-                    <circle cx="40" cy="28" r="18" fill="white" fillOpacity="0.9"/>
-                    <path d="M8 72c0-18 14-30 32-30s32 12 32 30" fill="white" fillOpacity="0.9"/>
-                    <rect x="28" y="48" width="24" height="4" rx="2" fill="white" fillOpacity="0.5"/>
-                  </svg>
-                </div>
-                <div className="absolute -bottom-2 -right-2 bg-green-500 border-4 border-[#0a0a0a] w-5 h-5 rounded-full" />
+            {/* Profile Avatar 3D element */}
+            <div className="w-36 h-36 rounded-full bg-gradient-to-br from-orange-500 to-purple-600 mb-8 relative transform" style={{ transform: 'translateZ(60px)' }}>
+              <div className="absolute inset-1 bg-[#0a0a0a] rounded-full flex items-center justify-center shadow-[inset_0_0_20px_rgba(0,0,0,0.8)]">
+                <span className="text-5xl font-display font-black text-transparent bg-clip-text bg-gradient-to-br from-white to-white/40">AB</span>
               </div>
+              {/* Orbiting element */}
+              <div className="absolute -inset-4 border border-white/10 rounded-full animate-[spin_10s_linear_infinite] border-dashed" />
+              <div className="absolute -top-1 -right-1 bg-green-500 w-4 h-4 rounded-full border-2 border-black" />
+            </div>
 
-              <h2 className="text-white font-black text-xl mb-1">Aarya Balan</h2>
-              <p className="text-orange-400 font-semibold text-sm mb-4">Full Stack Developer</p>
-              <p className="text-white/35 text-sm leading-relaxed mb-7">
-                Turning coffee into code. Frontend, backend, database — I do it all.
-                Sometimes it even works on the first try.
-              </p>
+            <h2 className="text-3xl font-display font-black text-white transform tracking-tight" style={{ transform: 'translateZ(40px)' }}>
+              Aarya Balan
+            </h2>
+            <p className="text-orange-400/90 text-xs font-bold uppercase tracking-[0.3em] mt-3 transform" style={{ transform: 'translateZ(30px)' }}>
+              Architect
+            </p>
 
-              {/* Stats */}
-              <div className="flex gap-4 w-full border-t border-white/[0.08] pt-6">
-                {[['5+', 'Projects'], ['2+', 'Years'], ['~0', 'Sleep Hours']].map(([val, lab]) => (
-                  <div key={lab} className="flex-1 text-center">
-                    <div className="text-white font-black text-lg">{val}</div>
-                    <div className="text-white/30 text-xs mt-0.5">{lab}</div>
-                  </div>
-                ))}
-              </div>
+            <p className="text-white/40 text-center text-sm mt-6 leading-relaxed transform" style={{ transform: 'translateZ(20px)' }}>
+              Engineering digital reality. Sometimes it even compiles on the first try.
+            </p>
 
-              {/* CV button */}
-              <a
-                href="#"
-                className="mt-6 w-full bg-orange-500 hover:bg-orange-400 text-white font-bold py-3.5 rounded-2xl text-sm transition-all duration-200 hover:scale-105 text-center flex items-center justify-center gap-2"
-              >
-                <DownloadIcon size={15} />
-                Download CV
+            {/* Floating Download Button inside Card */}
+            <div className="mt-auto w-full transform" style={{ transform: 'translateZ(50px)' }}>
+              <a href="#" className="w-full bg-white/10 hover:bg-white text-white hover:text-black font-bold py-4 rounded-2xl text-xs uppercase tracking-widest transition-all duration-300 text-center flex items-center justify-center gap-2 border border-white/10 hover:border-white shadow-xl">
+                <DownloadIcon size={14} /> Extract Resume
               </a>
-            </div>
-
-            {/* Floating stat chips */}
-            <div className="absolute -top-5 -right-5 bg-yellow-400 text-black text-xs font-black px-4 py-2 rounded-2xl rotate-6 shadow-xl">
-              4.9 / 5.0 rated
-            </div>
-            <div className="absolute -bottom-5 -left-5 bg-purple-600 text-white text-xs font-bold px-4 py-2 rounded-2xl -rotate-3 shadow-xl">
-              100+ happy users
             </div>
           </div>
         </div>
+
       </div>
     </section>
   )
