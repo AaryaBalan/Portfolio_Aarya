@@ -1,144 +1,156 @@
+import {
+  GitHubIcon, LinkedInIcon, InstagramIcon, DownloadIcon,
+  ArrowRightIcon, SparkleIcon, CheckCircleIcon, TrendingUpIcon, ZapIcon
+} from './Icons'
+
 const Hero = () => {
   return (
-    <section id="home" className="min-h-screen bg-[#0f0f0f] flex items-center relative overflow-hidden pt-24">
-      {/* Background grid pattern */}
+    <section id="home" className="min-h-screen bg-[#0a0a0a] flex items-center relative overflow-hidden pt-24">
+      {/* Background grid */}
       <div
-        className="absolute inset-0 opacity-[0.04]"
+        className="absolute inset-0 opacity-[0.035]"
         style={{
           backgroundImage: 'linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)',
-          backgroundSize: '60px 60px',
+          backgroundSize: '64px 64px',
         }}
       />
       {/* Gradient blobs */}
-      <div className="absolute top-20 right-[-5%] w-[500px] h-[500px] bg-purple-700 rounded-full blur-[140px] opacity-20" />
-      <div className="absolute bottom-0 left-[-5%] w-[400px] h-[400px] bg-orange-600 rounded-full blur-[120px] opacity-15" />
+      <div className="absolute top-20 right-[-5%] w-[560px] h-[560px] bg-purple-700 rounded-full blur-[150px] opacity-20" />
+      <div className="absolute bottom-0 left-[-5%] w-[440px] h-[440px] bg-orange-600 rounded-full blur-[130px] opacity-15" />
 
-      <div className="max-w-6xl mx-auto px-6 py-16 w-full">
+      <div className="max-w-6xl mx-auto px-6 py-20 w-full">
         <div className="flex flex-col lg:flex-row items-center gap-16">
 
           {/* Left content */}
           <div className="flex-1 text-center lg:text-left">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-2 mb-8">
-              <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-              <span className="text-gray-300 text-sm font-medium">Available for work — hire me before someone else does 😤</span>
+            {/* Availability badge */}
+            <div className="inline-flex items-center gap-2.5 bg-white/[0.05] border border-white/[0.1] rounded-full px-5 py-2.5 mb-10">
+              <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse flex-shrink-0" />
+              <span className="text-white/60 text-sm font-medium">Available for work — hire me before someone else does</span>
             </div>
 
-            {/* Name / intro badge */}
-            <div className="flex items-center justify-center lg:justify-start gap-2 mb-4">
-              <span className="bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full">Hey! 👋</span>
-              <span className="text-gray-300 text-sm">I'm <strong className="text-white">Aarya Balan</strong></span>
+            {/* Intro badge */}
+            <div className="flex items-center justify-center lg:justify-start gap-3 mb-5">
+              <span className="bg-orange-500 text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest">Hey</span>
+              <span className="text-white/50 text-base">I'm <strong className="text-white font-bold">Aarya Balan</strong></span>
             </div>
 
             {/* Headline */}
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.05] mb-6">
+            <h1 className="text-5xl md:text-6xl lg:text-[72px] font-black text-white leading-[1.04] mb-7">
               I build{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-pink-500">full-stack</span>
               <br />
               stuff that<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400">actually works!</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400">actually works.</span>
             </h1>
 
             {/* Sub-headline */}
-            <p className="text-gray-400 text-lg mb-10 max-w-lg mx-auto lg:mx-0 leading-relaxed">
-              Code, bugs, and late-night coffee keep it all running.{' '}
-              <span className="text-orange-400 font-semibold">No stack overflow questions were harmed</span> in the making of these projects. (Okay, maybe a few.)
+            <p className="text-white/45 text-lg md:text-xl mb-11 max-w-lg mx-auto lg:mx-0 leading-relaxed">
+              Code, bugs, and late-night coffee keep it all running.
+              No Stack Overflow questions were harmed in the making of these projects.
+              <span className="text-orange-400/80 font-medium"> (Okay, maybe a few.)</span>
             </p>
 
             {/* Traits */}
-            <div className="flex flex-wrap gap-2 justify-center lg:justify-start mb-10">
-              {['Creative ✨', 'Reliable 💪', 'Efficient ⚡', 'Caffeinated ☕'].map(t => (
-                <span key={t} className="text-gray-400 text-sm border border-white/10 px-3 py-1 rounded-full hover:border-orange-500/50 hover:text-white transition-all duration-200">
-                  {t}
+            <div className="flex flex-wrap gap-2.5 justify-center lg:justify-start mb-11">
+              {[
+                { label: 'Creative', icon: <SparkleIcon size={14} /> },
+                { label: 'Reliable', icon: <CheckCircleIcon size={14} /> },
+                { label: 'Efficient', icon: <ZapIcon size={14} /> },
+                { label: 'Always Growing', icon: <TrendingUpIcon size={14} /> },
+              ].map(t => (
+                <span key={t.label} className="text-white/50 text-sm border border-white/[0.1] px-4 py-1.5 rounded-full hover:border-orange-500/40 hover:text-white/80 transition-all duration-200 flex items-center gap-2">
+                  <span className="text-orange-400/70">{t.icon}</span>
+                  {t.label}
                 </span>
               ))}
             </div>
 
             {/* CTAs */}
-            <div className="flex flex-wrap gap-4 justify-center lg:justify-start mb-12">
+            <div className="flex flex-wrap gap-4 justify-center lg:justify-start mb-14">
               <a
                 href="#contact"
                 id="contact-cta-btn"
-                className="bg-white text-black font-bold px-7 py-4 rounded-xl hover:bg-orange-500 hover:text-white transition-all duration-200 hover:scale-105 shadow-xl text-sm"
+                className="bg-white text-black font-bold px-8 py-4 rounded-2xl hover:bg-orange-500 hover:text-white transition-all duration-200 hover:scale-105 shadow-xl text-base flex items-center gap-2.5"
               >
-                Contact me →
+                Contact me <ArrowRightIcon size={16} />
               </a>
               <a
                 href="#projects"
-                className="border border-white/20 text-white font-semibold px-7 py-4 rounded-xl hover:border-white/50 hover:bg-white/5 transition-all duration-200 text-sm"
+                className="border border-white/[0.15] text-white font-semibold px-8 py-4 rounded-2xl hover:border-white/40 hover:bg-white/[0.05] transition-all duration-200 text-base"
               >
                 See my work
               </a>
             </div>
 
-            {/* Social links */}
-            <div className="flex items-center gap-6 justify-center lg:justify-start">
+            {/* Socials */}
+            <div className="flex items-center gap-7 justify-center lg:justify-start">
               {[
-                { label: 'GitHub', icon: (
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-                )},
-                { label: 'LinkedIn', icon: (
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                )},
-                { label: 'Instagram', icon: (
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-                )},
-              ].map(social => (
-                <a key={social.label} href="#" className="text-gray-500 hover:text-white transition-colors duration-200 hover:scale-110 transform">
-                  {social.icon}
+                { label: 'GitHub', icon: <GitHubIcon size={20} /> },
+                { label: 'LinkedIn', icon: <LinkedInIcon size={20} /> },
+                { label: 'Instagram', icon: <InstagramIcon size={20} /> },
+              ].map(s => (
+                <a key={s.label} href="#" aria-label={s.label} className="text-white/30 hover:text-white transition-colors duration-200 hover:scale-110 transform">
+                  {s.icon}
                 </a>
               ))}
             </div>
           </div>
 
-          {/* Right - Profile card */}
+          {/* Right — Profile card */}
           <div className="flex-shrink-0 relative">
-            {/* Outer envelope shapes (inspired by reference) */}
-            <div className="absolute -inset-8 border border-white/5 rounded-3xl rotate-6" />
-            <div className="absolute -inset-8 border border-white/5 rounded-3xl -rotate-3" />
+            {/* Decorative rings */}
+            <div className="absolute -inset-10 border border-white/[0.04] rounded-3xl rotate-6" />
+            <div className="absolute -inset-10 border border-white/[0.04] rounded-3xl -rotate-3" />
 
-            {/* Main card */}
-            <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 flex flex-col items-center text-center w-72 hover:border-orange-500/30 transition-all duration-500 hover:shadow-2xl hover:shadow-orange-500/10">
+            {/* Card */}
+            <div className="relative bg-white/[0.04] backdrop-blur-sm border border-white/[0.08] rounded-3xl p-9 flex flex-col items-center text-center w-[290px] hover:border-orange-500/25 transition-all duration-500 hover:shadow-2xl hover:shadow-orange-500/10">
               {/* Avatar */}
-              <div className="relative mb-6">
-                <div className="w-28 h-28 rounded-2xl bg-gradient-to-br from-orange-400 to-pink-600 flex items-center justify-center text-6xl shadow-xl">
-                  🧑‍💻
+              <div className="relative mb-7">
+                <div className="w-28 h-28 rounded-2xl bg-gradient-to-br from-orange-400 to-pink-600 flex items-center justify-center shadow-2xl">
+                  {/* Developer silhouette */}
+                  <svg viewBox="0 0 80 80" width="56" height="56" fill="none">
+                    <circle cx="40" cy="28" r="18" fill="white" fillOpacity="0.9"/>
+                    <path d="M8 72c0-18 14-30 32-30s32 12 32 30" fill="white" fillOpacity="0.9"/>
+                    <rect x="28" y="48" width="24" height="4" rx="2" fill="white" fillOpacity="0.5"/>
+                  </svg>
                 </div>
-                <div className="absolute -bottom-2 -right-2 bg-green-500 border-4 border-[#1a1a2e] w-5 h-5 rounded-full" />
+                <div className="absolute -bottom-2 -right-2 bg-green-500 border-4 border-[#0a0a0a] w-5 h-5 rounded-full" />
               </div>
 
               <h2 className="text-white font-black text-xl mb-1">Aarya Balan</h2>
-              <p className="text-orange-400 font-semibold text-sm mb-3">Full Stack Developer</p>
-              <p className="text-gray-400 text-xs leading-relaxed mb-6">
-                Turning coffee into code since forever. Frontend, backend, database — I do it all.
-                Sometimes it even works on the first try! (Very rarely.)
+              <p className="text-orange-400 font-semibold text-sm mb-4">Full Stack Developer</p>
+              <p className="text-white/35 text-sm leading-relaxed mb-7">
+                Turning coffee into code. Frontend, backend, database — I do it all.
+                Sometimes it even works on the first try.
               </p>
 
-              {/* Stats row */}
-              <div className="flex gap-4 w-full border-t border-white/10 pt-5">
-                {[['5+', 'Projects'], ['2+', 'Years'], ['∞', 'Bugs Fixed']].map(([val, lab]) => (
+              {/* Stats */}
+              <div className="flex gap-4 w-full border-t border-white/[0.08] pt-6">
+                {[['5+', 'Projects'], ['2+', 'Years'], ['~0', 'Sleep Hours']].map(([val, lab]) => (
                   <div key={lab} className="flex-1 text-center">
                     <div className="text-white font-black text-lg">{val}</div>
-                    <div className="text-gray-500 text-xs">{lab}</div>
+                    <div className="text-white/30 text-xs mt-0.5">{lab}</div>
                   </div>
                 ))}
               </div>
 
-              {/* Download CV */}
+              {/* CV button */}
               <a
                 href="#"
-                className="mt-5 w-full bg-orange-500 hover:bg-orange-400 text-white font-bold py-3 rounded-xl text-sm transition-all duration-200 hover:scale-105 text-center block"
+                className="mt-6 w-full bg-orange-500 hover:bg-orange-400 text-white font-bold py-3.5 rounded-2xl text-sm transition-all duration-200 hover:scale-105 text-center flex items-center justify-center gap-2"
               >
-                Download CV 📥
+                <DownloadIcon size={15} />
+                Download CV
               </a>
             </div>
 
-            {/* Floating badges */}
-            <div className="absolute -top-4 -right-4 bg-yellow-400 text-black text-xs font-black px-3 py-1.5 rounded-xl rotate-6 shadow-lg animate-bounce">
-              4.9 ⭐ rating
+            {/* Floating stat chips */}
+            <div className="absolute -top-5 -right-5 bg-yellow-400 text-black text-xs font-black px-4 py-2 rounded-2xl rotate-6 shadow-xl">
+              4.9 / 5.0 rated
             </div>
-            <div className="absolute -bottom-4 -left-4 bg-purple-600 text-white text-xs font-bold px-3 py-1.5 rounded-xl -rotate-3 shadow-lg">
-              100+ users 🤯
+            <div className="absolute -bottom-5 -left-5 bg-purple-600 text-white text-xs font-bold px-4 py-2 rounded-2xl -rotate-3 shadow-xl">
+              100+ happy users
             </div>
           </div>
         </div>
