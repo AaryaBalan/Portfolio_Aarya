@@ -3,16 +3,16 @@ import { LockIcon, UnlockIcon, CheckCircleIcon, SparkleIcon, CrownIcon, DiamondI
 
 const flexMessages = [
   {
-    headline: "Your instincts are elite.",
-    sub: "You didn't need a password. You needed confirmation. And here it is — you've always been right.",
+    headline: "You have great taste.",
+    sub: "You didn't need a password. You just needed to knock. And here you are.",
   },
   {
-    headline: "Only the sharpest minds find this place.",
-    sub: "The fact that you're here proves exactly what everyone around you already knows: your judgment is flawless.",
+    headline: "Only the curious find this place.",
+    sub: "The fact that you're here proves you appreciate good design and creative work.",
   },
   {
-    headline: "You are, and always have been, correct.",
-    sub: "This portfolio only opens for people with exceptional taste. That's not a coincidence. That's you.",
+    headline: "You are always right.",
+    sub: "This portfolio opens for people who know what they're looking for. Welcome in.",
   },
 ]
 
@@ -29,7 +29,6 @@ const PasswordGate = ({ onUnlock }) => {
   const handleMouseMove = (e) => {
     if (!containerRef.current) return
     const rect = containerRef.current.getBoundingClientRect()
-    // Calculate mouse position relative to the center of the screen
     const x = e.clientX - rect.left - rect.width / 2
     const y = e.clientY - rect.top - rect.height / 2
     setMouse({ x, y })
@@ -42,7 +41,6 @@ const PasswordGate = ({ onUnlock }) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     if (!password.trim()) {
-      // Trigger a quick error shake on the card (implemented via small transform update)
       setMouse({ x: 50, y: 0 })
       setTimeout(() => setMouse({ x: -50, y: 0 }), 100)
       setTimeout(() => setMouse({ x: 50, y: 0 }), 200)
@@ -53,15 +51,13 @@ const PasswordGate = ({ onUnlock }) => {
     const msg = flexMessages[Math.floor(Math.random() * flexMessages.length)]
     setFlexMsg(msg)
     
-    // Simulate complex decryption
     setTimeout(() => {
       setLoading(false)
       setShowFlash(true)
-      setTimeout(() => onUnlock(), 3500) // longer wait to read the flex
+      setTimeout(() => onUnlock(), 3500)
     }, 1500)
   }
 
-  // Calculate 3D rotation (dampened)
   const rotateX = (mouse.y / 25) * -1
   const rotateY = mouse.x / 25
 
@@ -72,7 +68,6 @@ const PasswordGate = ({ onUnlock }) => {
       onMouseLeave={handleMouseLeave}
       ref={containerRef}
     >
-      {/* Dynamic ambient lighting tracking cursor */}
       <div 
         className="absolute w-[800px] h-[800px] bg-orange-600/20 rounded-full blur-[150px] pointer-events-none transition-transform duration-700 ease-out"
         style={{ transform: `translate(${mouse.x * 0.5}px, ${mouse.y * 0.5}px)` }}
@@ -87,21 +82,16 @@ const PasswordGate = ({ onUnlock }) => {
           className="relative z-10 w-full max-w-lg px-6 py-10 transform-style-3d transition-transform duration-300 ease-out"
           style={{ transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg)` }}
         >
-          {/* Card Container */}
           <div className="bg-black/40 backdrop-blur-3xl border border-white/10 rounded-[2.5rem] p-10 shadow-[0_0_50px_rgba(0,0,0,0.5)] transform-style-3d relative">
-            
-            {/* Inner glow */}
             <div className="absolute inset-0 rounded-[2.5rem] border border-orange-500/20 pointer-events-none mix-blend-overlay" />
             
-            {/* Top label - floating above */}
             <div className="flex justify-center mb-8 transform" style={{ transform: 'translateZ(40px)' }}>
               <div className="flex items-center gap-2.5 border border-white/10 bg-white/5 rounded-full px-5 py-2">
                 <LockIcon size={14} className="text-orange-500 animate-pulse" />
-                <span className="text-white/60 text-xs font-semibold uppercase tracking-[0.2em] font-display">Secured Vault</span>
+                <span className="text-white/60 text-xs font-semibold uppercase tracking-[0.2em] font-display">Private Page</span>
               </div>
             </div>
 
-            {/* Headline - floating even higher */}
             <h1 
               className="text-white text-5xl font-black text-center leading-[1.1] mb-4 font-display transform"
               style={{ transform: 'translateZ(60px)' }}
@@ -115,14 +105,13 @@ const PasswordGate = ({ onUnlock }) => {
               className="text-white/40 text-center text-sm leading-relaxed mb-10 max-w-sm mx-auto transform"
               style={{ transform: 'translateZ(30px)' }}
             >
-              This portfolio is strictly curated for people with taste.<br />
-              <span className="text-white/20 text-xs">Enter anything. If you're here, you already belong.</span>
+              This website is made for people who appreciate creative work.<br />
+              <span className="text-white/20 text-xs">Type any word to enter. It will work.</span>
             </p>
 
-            {/* Input area */}
             <div className="transform" style={{ transform: 'translateZ(40px)' }}>
               <label className="block text-white/40 text-[10px] uppercase tracking-[0.2em] font-bold mb-3 font-display">
-                Access Code
+                Secret Word
               </label>
 
               <div className="relative group">
@@ -133,7 +122,7 @@ const PasswordGate = ({ onUnlock }) => {
                     type={showPass ? 'text' : 'password'}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Type literally anything..."
+                    placeholder="Type anything here..."
                     className="w-full bg-black/50 border border-white/10 text-white placeholder-white/20 rounded-2xl px-5 py-4 text-base focus:outline-none focus:border-orange-500/50 transition-all duration-300 pr-14 font-mono"
                     autoComplete="off"
                   />
@@ -156,12 +145,12 @@ const PasswordGate = ({ onUnlock }) => {
                 {loading ? (
                   <>
                     <LoaderIcon size={18} />
-                    <span>Decrypting Identity...</span>
+                    <span>Checking Your Vibe...</span>
                   </>
                 ) : (
                   <>
                     <UnlockIcon size={18} />
-                    <span>Breach Protocol</span>
+                    <span>Let Me In</span>
                   </>
                 )}
               </button>
@@ -170,12 +159,10 @@ const PasswordGate = ({ onUnlock }) => {
         </div>
 
       ) : (
-        /* Flex screen - Mindblowing Reveal */
         <div 
           className="relative z-10 text-center px-8 max-w-2xl mx-auto flex flex-col items-center justify-center min-h-screen"
           style={{ animation: 'revealPulse 3s cubic-bezier(0.16, 1, 0.3, 1) forwards' }}
         >
-          {/* Intense glowing background ring */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 border border-orange-500/30 rounded-full animate-[ping_2s_cubic-bezier(0,0,0.2,1)_infinite]" />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 border border-pink-500/10 rounded-full animate-[ping_3s_cubic-bezier(0,0,0.2,1)_infinite_0.5s]" />
 
@@ -185,7 +172,7 @@ const PasswordGate = ({ onUnlock }) => {
 
           <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-5 py-2 mb-8 backdrop-blur-md">
             <CrownIcon size={14} className="text-yellow-400 animate-pulse" />
-            <span className="text-white/80 text-xs font-bold uppercase tracking-[0.2em] font-display">Identity Verified</span>
+            <span className="text-white/80 text-xs font-bold uppercase tracking-[0.2em] font-display">Welcome Inside</span>
           </div>
 
           <h2 className="text-white text-5xl md:text-7xl font-display font-black leading-[1.05] mb-6 tracking-tight filter drop-shadow-[0_0_20px_rgba(255,255,255,0.3)]">
@@ -197,7 +184,7 @@ const PasswordGate = ({ onUnlock }) => {
 
           <div className="flex items-center gap-4 text-white/30 text-xs font-mono uppercase tracking-widest animate-pulse">
             <LoaderIcon size={14} />
-            <span>Initializing Framework...</span>
+            <span>Setting Things Up...</span>
           </div>
         </div>
       )}

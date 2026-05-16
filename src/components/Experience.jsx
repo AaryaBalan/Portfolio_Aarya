@@ -2,42 +2,42 @@ import { BriefcaseIcon, AwardIcon } from './Icons'
 
 const experience = [
   {
-    role: 'Full Stack Engineer',
-    company: 'TechVerse Solutions',
+    role: 'Lead Web Creator',
+    company: 'Creative Agency',
     period: '2024 – Present',
     type: 'Lead',
     color: 'from-orange-500 to-pink-500',
     border: 'border-orange-500/30',
     bullets: [
-      'Architected and deployed scalable frontend systems using React and Next.js for high-traffic client apps.',
-      'Designed RESTful APIs, defined complex data flows, and built scalable DB schemas.',
-      'Managed a live codebase handling thousands of requests daily without breaking a sweat.'
+      'Built massive online platforms used by thousands of people every single day.',
+      'Organized the entire team to make sure projects were finished perfectly and on time.',
+      'Made sure the websites loaded instantly on both phones and slow computers.'
     ],
   },
   {
-    role: 'Freelance Developer',
-    company: 'Monster Studio',
+    role: 'Independent Creator',
+    company: 'Various Clients',
     period: '2023 – 2024',
     type: 'Contract',
     color: 'from-purple-500 to-cyan-500',
     border: 'border-purple-500/30',
     bullets: [
-      'Engineered MongoDB indexing, caching, and complex aggregations optimizing query times by 40%.',
-      'Integrated Cloudflare R2, Stripe payments, and real-time WebSockets.',
-      'Built responsive analytical dashboards that clients actually understood.'
+      'Worked directly with business owners to turn their ideas into real, working websites.',
+      'Set up secure payment systems so stores could sell their products safely online.',
+      'Designed visual charts so clients could easily understand their business numbers.'
     ],
   },
   {
-    role: 'Open Source Contributor',
-    company: 'Various Repos',
+    role: 'Community Helper',
+    company: 'Public Projects',
     period: '2022 – 2023',
     type: 'Global',
     color: 'from-green-500 to-emerald-500',
     border: 'border-green-500/30',
     bullets: [
-      'Submitted massive PRs to several core React and Node.js open-source libraries.',
-      'Fixed legacy bugs that had been open for months. Became the hero nobody asked for.',
-      'Learned that strict code reviews are humbling. Very, very humbling.'
+      'Helped fix problems in tools that other creators all around the world use.',
+      'Solved complicated issues that had been annoying people for months.',
+      'Learned how to write instructions so everyone could understand my work.'
     ],
   },
 ]
@@ -45,7 +45,6 @@ const experience = [
 const Experience = () => {
   return (
     <section id="experience" className="bg-[#030303] py-32 relative overflow-hidden">
-      {/* Background Grid Pattern */}
       <div 
         className="absolute inset-0 opacity-[0.02] pointer-events-none"
         style={{
@@ -61,13 +60,11 @@ const Experience = () => {
             The Timeline
           </p>
           <h2 className="text-5xl md:text-7xl font-display font-black leading-tight tracking-tighter">
-            Operational <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-orange-500">History.</span>
+            My <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-orange-500">History.</span>
           </h2>
         </div>
 
-        {/* Central Data Pipeline Timeline */}
         <div className="relative max-w-4xl mx-auto">
-          {/* Glowing central line */}
           <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-white/10 md:-translate-x-1/2">
             <div className="absolute top-0 w-full h-[30%] bg-gradient-to-b from-transparent via-orange-500 to-transparent animate-[ping_4s_ease-in-out_infinite] opacity-50" />
           </div>
@@ -76,17 +73,14 @@ const Experience = () => {
             {experience.map((exp, i) => (
               <div key={i} className={`relative flex flex-col md:flex-row items-start ${i % 2 === 0 ? 'md:flex-row-reverse' : ''} gap-8 md:gap-16 group`}>
                 
-                {/* Center Node */}
                 <div className="absolute left-8 md:left-1/2 top-0 -translate-x-1/2 w-4 h-4 rounded-full bg-black border-2 border-white/20 z-10 group-hover:border-orange-500 group-hover:scale-150 transition-all duration-300">
                   <div className={`absolute inset-1 rounded-full bg-gradient-to-r ${exp.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
                   <div className={`absolute -inset-4 rounded-full bg-gradient-to-r ${exp.color} opacity-0 group-hover:opacity-20 blur-md transition-opacity duration-300`} />
                 </div>
 
-                {/* Content Card */}
                 <div className="w-full md:w-1/2 pl-16 md:pl-0">
                   <div className={`bg-[#080808] border ${exp.border} rounded-[2rem] p-8 md:p-10 hover:bg-[#0c0c0c] transition-colors duration-500 relative overflow-hidden`}>
                     
-                    {/* Corner accent */}
                     <div className="absolute top-0 right-0 p-6 opacity-10">
                       <BriefcaseIcon size={64} className="text-white" />
                     </div>

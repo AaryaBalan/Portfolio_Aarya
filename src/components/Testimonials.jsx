@@ -2,19 +2,19 @@ import { QuoteIcon } from './Icons'
 
 const testimonials = [
   {
-    quote: "He doesn't just write code; he builds systems that are fast, reliable, and built to last. Also he somehow fixed a bug in 2 minutes that I had been staring at for 3 days.",
+    quote: "He doesn't just build websites; he creates systems that are fast, reliable, and built to last. Also, he somehow fixed a problem in 2 minutes that I had been staring at for 3 days.",
     name: 'Rohan Shah',
     role: 'Project Manager',
   },
   {
-    quote: "He not only led critical projects but also managed the team with exceptional leadership. And he never missed a standup. That alone makes him a legend.",
+    quote: "He not only led our major projects but also managed the team with incredible patience. He never missed a meeting, and always brought the best ideas to the table.",
     name: 'Priya Mehta',
     role: 'Product Designer',
   },
   {
-    quote: "His expertise in the MERN stack consistently shines. He built our REST API so fast I thought he just copied it from somewhere. He assured me he did not. I still wonder.",
+    quote: "His expertise in putting everything together is amazing. He built our entire platform so quickly I thought he just copied it from somewhere. He assured me he did not.",
     name: 'Kiran Nair',
-    role: 'Backend Developer',
+    role: 'Business Owner',
   },
 ]
 
@@ -28,7 +28,7 @@ const Testimonials = () => {
             The Evidence
           </p>
           <h2 className="text-5xl md:text-7xl font-display font-black leading-tight tracking-tighter text-center">
-            Social <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">Proof.</span>
+            What People <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">Say.</span>
           </h2>
         </div>
 
@@ -38,7 +38,6 @@ const Testimonials = () => {
               key={i}
               className="group bg-[#080808] border border-white/10 rounded-[2.5rem] p-10 flex flex-col justify-between hover:scale-[1.02] hover:bg-[#0c0c0c] transition-all duration-500 relative overflow-hidden"
             >
-              {/* Massive background quote mark */}
               <div className="absolute -top-10 -left-10 text-white/[0.02] group-hover:text-purple-500/[0.05] transition-colors duration-500 transform scale-150">
                 <QuoteIcon size={200} />
               </div>
