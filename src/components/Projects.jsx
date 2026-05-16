@@ -1,37 +1,45 @@
-import { ExternalLinkIcon, CodeIcon, LayersIcon } from './Icons'
+import { ExternalLinkIcon, CodeIcon } from './Icons'
 
 const projects = [
   {
-    title: 'Health Care Hub',
-    subtitle: 'Connecting Patients & Doctors',
-    description: 'A complete online platform connecting people with doctors and blood donors. Because waiting in long hospital queues is never fun.',
-    tags: ['Healthcare', 'Booking System', 'Web App'],
-    color: 'from-red-500/20 to-pink-500/5',
-    accent: 'border-red-500/30',
+    title: 'WakeBuddy',
+    subtitle: 'Google AdMob Hackathon Top 30 Finalist',
+    description: 'A social alarm experience where you never wake up alone. Pair with a friend, hit "I\'m Awake", and trigger an instant call. Features shared streaks, leaderboards, and wake-up analytics.',
+    tags: ['Social App', 'Real-time', 'AdMob Integration'],
+    color: 'from-orange-500/20 to-pink-500/5',
+    accent: 'border-orange-500/30',
+    link: 'https://lnkd.in/gdhQEghu', // Demo Video
+    github: 'https://lnkd.in/gXTsUwJz'
   },
   {
-    title: 'Online Store',
-    subtitle: 'Shopping Experience',
-    description: 'A fully functional online shop where users can browse products, add to cart, and safely pay. It is basically Amazon, just slightly smaller.',
-    tags: ['E-Commerce', 'Online Payments', 'Storefront'],
-    color: 'from-blue-500/20 to-cyan-500/5',
-    accent: 'border-blue-500/30',
+    title: 'Dayable',
+    subtitle: 'Minimal Daily Social Media',
+    description: 'A calm, minimal space focused on your day, not your status. Share simple daily moments, track how your day went, and connect with friends through honest check-ins without endless scrolling.',
+    tags: ['Social Media', 'Wellness', 'UI/UX'],
+    color: 'from-cyan-500/20 to-blue-500/5',
+    accent: 'border-cyan-500/30',
+    link: '#',
+    github: '#'
   },
   {
-    title: 'Business Insights',
-    subtitle: 'Visualizing Data',
-    description: 'A live dashboard that turns boring numbers into beautiful, easy-to-read charts. Perfect for people who want to understand their business better.',
-    tags: ['Data Visualization', 'Live Charts', 'Dashboard'],
+    title: 'Zorphix',
+    subtitle: 'Department Symposium Platform',
+    description: 'The official event website for our college department symposium. A highly interactive, performance-optimized platform designed to handle registrations, event schedules, and showcase activities.',
+    tags: ['Event Website', 'College Symposium', 'Interactive'],
     color: 'from-purple-500/20 to-violet-500/5',
     accent: 'border-purple-500/30',
+    link: 'https://www.zorphix.com/',
+    github: '#'
   },
   {
-    title: 'Instant Chat',
-    subtitle: 'Live Messaging App',
-    description: 'A lightning-fast messaging app where you can talk to friends instantly in private rooms. Like WhatsApp, but with my own personal touch.',
-    tags: ['Live Chat', 'Social', 'Instant Messaging'],
+    title: 'Hacksymmetric',
+    subtitle: 'Hackathon Registration Hub',
+    description: 'The official registration and information portal for the Asymmetric Club hackathon. Built to handle team formations, live event updates, and provide a seamless onboarding experience for hackers.',
+    tags: ['Hackathon', 'Registration Portal', 'College Club'],
     color: 'from-green-500/20 to-emerald-500/5',
     accent: 'border-green-500/30',
+    link: 'https://hacksymmetric.vercel.app/',
+    github: '#'
   },
 ]
 
@@ -39,6 +47,7 @@ const Projects = () => {
   return (
     <section id="projects" className="bg-[#030303] py-32 relative overflow-hidden">
       
+      {/* Infinite scrolling text background */}
       <div className="absolute top-1/2 left-0 w-full -translate-y-1/2 opacity-[0.03] pointer-events-none select-none flex flex-col gap-8 transform -rotate-6 scale-125">
         <div className="whitespace-nowrap animate-marquee">
           <span className="text-[150px] font-display font-black mr-8">FEATURED WORK • RECENT PROJECTS • CREATIVE DESIGNS •</span>
@@ -70,6 +79,7 @@ const Projects = () => {
               key={i}
               className={`group relative overflow-hidden bg-[#080808] border ${p.accent} rounded-[2.5rem] p-10 md:p-14 transition-all duration-500 hover:scale-[1.01] hover:shadow-[0_0_50px_rgba(0,0,0,0.8)]`}
             >
+              {/* Hover glow effect */}
               <div className={`absolute inset-0 bg-gradient-to-br ${p.color} opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none`} />
               
               <div className="relative z-10 h-full flex flex-col">
@@ -82,9 +92,11 @@ const Projects = () => {
                     </h3>
                   </div>
                   
-                  <a href="#" className="w-16 h-16 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/50 group-hover:bg-white group-hover:text-black group-hover:scale-110 transition-all duration-300">
-                    <ExternalLinkIcon size={24} />
-                  </a>
+                  {p.link !== '#' && (
+                    <a href={p.link} target="_blank" rel="noopener noreferrer" className="w-16 h-16 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/50 group-hover:bg-white group-hover:text-black group-hover:scale-110 transition-all duration-300 flex-shrink-0 ml-4">
+                      <ExternalLinkIcon size={24} />
+                    </a>
+                  )}
                 </div>
 
                 <p className="text-xl text-white/50 leading-relaxed mb-12 max-w-lg font-light">
@@ -99,9 +111,12 @@ const Projects = () => {
                       </span>
                     ))}
                   </div>
-                  <a href="#" className="text-sm font-bold text-white/40 hover:text-white uppercase tracking-widest flex items-center gap-2 transition-colors">
-                    <CodeIcon size={16} /> View Details
-                  </a>
+                  
+                  {p.github !== '#' && (
+                    <a href={p.github} target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-white/40 hover:text-white uppercase tracking-widest flex items-center gap-2 transition-colors whitespace-nowrap">
+                      <CodeIcon size={16} /> Source Code
+                    </a>
+                  )}
                 </div>
 
               </div>
