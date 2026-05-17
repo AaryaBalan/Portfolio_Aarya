@@ -52,7 +52,7 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
             <span className="text-black font-display font-black text-base sm:text-lg">A</span>
             <div className="absolute inset-0 border-2 border-white/20 rounded-full scale-150 group-hover:scale-100 transition-transform duration-500" />
           </div>
-          <span className="text-white font-display font-bold text-base sm:text-lg tracking-widest uppercase hidden sm:block">
+          <span className="text-white font-display font-bold text-sm sm:text-lg tracking-widest uppercase block">
             Aarya<span className="text-orange-500">.dev</span>
           </span>
         </button>

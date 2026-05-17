@@ -6,7 +6,7 @@ const projects = [
     title: 'WakeBuddy',
     subtitle: 'Google AdMob Hackathon Top 30 Finalist',
     description: 'A social alarm experience where you never wake up alone. Pair with a friend, hit "I\'m Awake", and trigger an instant call. Features shared streaks, leaderboards, and wake-up analytics.',
-    tags: ['Social App', 'Real-time', 'AdMob Integration'],
+    tags: ['Social App', 'Real-time', 'Alarm App', 'UI/UX', 'React Native', 'Convex', 'AdMob Integration'],
     color: 'from-orange-500 to-pink-500',
     link: 'https://www.youtube.com/watch?v=pam_hI4dpRw',
     github: 'https://github.com/AaryaBalan/WakeupBuddy'
@@ -15,7 +15,7 @@ const projects = [
     title: 'Dayable',
     subtitle: 'Minimal Daily Social Media',
     description: 'A calm, minimal space focused on your day, not your status. Share simple daily moments, track how your day went, and connect with friends through honest check-ins without endless scrolling.',
-    tags: ['Social Media', 'Wellness', 'UI/UX'],
+    tags: ['Social Media', 'Wellness', 'UI/UX', 'React Native', 'WebSockets'],
     color: 'from-cyan-500 to-blue-500',
     link: 'https://www.linkedin.com/in/aaryabalan/details/projects/',
     github: 'https://github.com/AaryaBalan/Dayable'
@@ -24,7 +24,7 @@ const projects = [
     title: 'Zorphix',
     subtitle: 'Department Symposium Platform',
     description: 'The official event website for our college department symposium. A highly interactive, performance-optimized platform designed to handle registrations, event schedules, and showcase activities.',
-    tags: ['Event Website', 'College Symposium', 'Interactive'],
+    tags: ['Event Website', 'College Symposium', 'Interactive', 'Event Registration', 'Team Formation'],
     color: 'from-purple-500 to-violet-500',
     link: 'https://www.zorphix.com/',
     github: 'https://github.com/ANAND060218/zorphix-2026'
@@ -33,7 +33,7 @@ const projects = [
     title: 'Hacksymmetric',
     subtitle: 'Hackathon Registration Hub',
     description: 'The official registration and information portal for the Asymmetric Club hackathon. Built to handle team formations, live event updates, and provide a seamless onboarding experience for hackers.',
-    tags: ['Hackathon', 'Registration Portal', 'College Club'],
+    tags: ['Hackathon', 'Registration Portal', 'College Club', 'Technical Event'],
     color: 'from-green-500 to-emerald-500',
     link: 'https://hacksymmetric.vercel.app/',
     github: 'https://github.com/AaryaBalan/hacksymmetric'
@@ -42,7 +42,7 @@ const projects = [
     title: 'LetItOut',
     subtitle: 'Empathetic Community Platform',
     description: 'A secure, community-driven application for emotional expression and mental wellness. Features a gamified reputation system awarding badges to contributors who actively uplift and console others.',
-    tags: ['Mental Wellness', 'Community App', 'Gamification'],
+    tags: ['Mental Wellness', 'Community App', 'Gamification', 'Motivational', 'Social Media', 'Expressive Writing'],
     color: 'from-pink-500 to-rose-500',
     link: '#',
     github: 'https://github.com/AaryaBalan/LetItOut'
@@ -51,7 +51,7 @@ const projects = [
     title: 'WorkFlow',
     subtitle: 'Productivity Platform',
     description: 'WorkFlow is an all-in-one productivity platform designed to help users organize tasks, manage time efficiently, and improve daily workflow. With its intuitive interface and powerful productivity tools, users can create dedicated project rooms to collaborate, discuss ideas, and enhance teamwork seamlessly.',
-    tags: ['Productivity', 'Task Management', 'Time Management', 'Team work', 'Note sharing'],
+    tags: ['Productivity', 'Task Management', 'Time Management', 'Team work', 'Note sharing', 'AI Assistant'],
     color: 'from-yellow-400 to-orange-500',
     link: 'https://flow-work.vercel.app/',
     github: 'https://github.com/AaryaBalan/Flow'
@@ -60,7 +60,7 @@ const projects = [
     title: 'TrackMyVibe',
     subtitle: 'Expressive Mood Tracking Platform',
     description: 'An interactive daily journaling app enabling users to log emotional states with contextual tags. Features a "Memory Lane" algorithm surfacing entries from exactly one year prior.',
-    tags: ['React.js', 'Express', 'MongoDB', 'Tailwind CSS'],
+    tags: ['React.js', 'Express', 'MongoDB', 'Tailwind CSS', 'Mood Tracking', 'Journaling', 'AI Integration'],
     color: 'from-purple-400 to-pink-500',
     link: 'https://www.linkedin.com/in/aaryabalan/details/projects/',
     github: 'https://github.com/AaryaBalan/Track_My_Vibe'
@@ -117,9 +117,8 @@ const Projects = () => {
               onClick={() => setCurrentIndex(idx)}
             >
               <div
-                className={`h-full bg-white transition-all duration-300 ${
-                  idx === currentIndex ? 'w-full' : idx < currentIndex ? 'w-full opacity-50' : 'w-0'
-                }`}
+                className={`h-full bg-white transition-all duration-300 ${idx === currentIndex ? 'w-full' : idx < currentIndex ? 'w-full opacity-50' : 'w-0'
+                  }`}
               />
             </div>
           ))}
@@ -201,7 +200,7 @@ const Projects = () => {
                       {p.tags.map(tag => (
                         <span
                           key={tag}
-                          className="text-[9px] sm:text-[10px] bg-white/5 text-white/60 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full font-semibold tracking-wide"
+                          className="text-[12px] sm:text-[15px] bg-white/5 text-white/60 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full font-semibold tracking-wide"
                         >
                           {tag}
                         </span>

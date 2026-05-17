@@ -102,7 +102,7 @@ const Hero = ({ setCurrentPage }) => {
           {/* RIGHT — profile card: only visible lg+ */}
           <div className="lg:col-span-5 h-[560px] hidden lg:flex items-center justify-center perspective-1000 animate-[fadeIn_1.5s_ease-out_1s_both]">
             <div
-              className="w-[320px] h-[440px] bg-white/[0.02] border border-white/10 rounded-[2.5rem] backdrop-blur-3xl transform-style-3d transition-transform duration-300 ease-out flex flex-col items-center p-10 shadow-[0_0_80px_rgba(0,0,0,0.8)] relative"
+              className="w-[400px] h-[460px] bg-white/[0.02] border border-white/10 rounded-[2.5rem] backdrop-blur-3xl transform-style-3d transition-transform duration-300 ease-out flex flex-col items-center p-10 shadow-[0_0_80px_rgba(0,0,0,0.8)] relative"
               style={{ transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg)` }}
             >
               <div className="absolute -right-16 -top-16 w-40 h-40 bg-pink-500/20 rounded-full blur-[70px] pointer-events-none" />
@@ -126,9 +126,9 @@ const Hero = ({ setCurrentPage }) => {
                 </div>
               </div>
 
-              <h2 className="text-2xl font-display font-black text-white tracking-tight">Aarya B</h2>
-              <p className="text-orange-400/90 text-[10px] font-bold uppercase tracking-[0.2em] mt-2 text-center">Full-Stack Engineer</p>
-              <p className="text-white/40 text-center text-xs mt-3 leading-relaxed px-2">
+              <h2 className="text-4xl font-display font-black text-white tracking-tight">Aarya B</h2>
+              <p className="text-orange-400/90 text-xl font-bold uppercase tracking-[0.2em] mt-2 text-center">Full-Stack Engineer</p>
+              <p className="text-white/40 text-center text-s mt-3 leading-relaxed px-2">
                 Building end-to-end software from architecture to deployment.
               </p>
 
@@ -137,7 +137,7 @@ const Hero = ({ setCurrentPage }) => {
                   href={resumePdf}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full bg-white/10 hover:bg-white text-white hover:text-black font-bold py-3.5 rounded-2xl text-xs uppercase tracking-widest transition-all duration-300 text-center flex items-center justify-center gap-2 border border-white/10 hover:border-white"
+                  className="mt-2 w-full bg-white/10 hover:bg-white text-white hover:text-black font-bold py-3.5 rounded-2xl text-xs uppercase tracking-widest transition-all duration-300 text-center flex items-center justify-center gap-2 border border-white/10 hover:border-white"
                 >
                   <DownloadIcon size={13} /> Download Resume
                 </a>
