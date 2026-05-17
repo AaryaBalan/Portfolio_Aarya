@@ -1,43 +1,44 @@
-import { BriefcaseIcon, AwardIcon } from './Icons'
+import { useState } from 'react'
+import { BriefcaseIcon } from './Icons'
 
 const experience = [
   {
-    role: 'Lead Web Creator',
-    company: 'Creative Agency',
-    period: '2024 – Present',
-    type: 'Lead',
+    role: 'Technical Lead',
+    company: 'Asymmetric',
+    period: 'Oct 2025 – Present',
+    type: 'Leadership',
     color: 'from-orange-500 to-pink-500',
-    border: 'border-orange-500/30',
+    glowColor: 'rgba(249,115,22,0.5)', // Orange glow
     bullets: [
-      'Built massive online platforms used by thousands of people every single day.',
-      'Organized the entire team to make sure projects were finished perfectly and on time.',
-      'Made sure the websites loaded instantly on both phones and slow computers.'
+      'Leading the technical development and architecture for the club\'s core digital platforms.',
+      'Mentoring developers, overseeing code reviews, and ensuring high-quality project delivery.',
+      'Architecting React.js applications with robust API integrations for scalable performance.'
     ],
   },
   {
-    role: 'Independent Creator',
-    company: 'Various Clients',
-    period: '2023 – 2024',
-    type: 'Contract',
+    role: 'Full Stack Intern',
+    company: 'BonTon Softwares',
+    period: 'Nov 2025 – Dec 2025',
+    type: 'On-site · Chennai',
     color: 'from-purple-500 to-cyan-500',
-    border: 'border-purple-500/30',
+    glowColor: 'rgba(168,85,247,0.5)', // Purple glow
     bullets: [
-      'Worked directly with business owners to turn their ideas into real, working websites.',
-      'Set up secure payment systems so stores could sell their products safely online.',
-      'Designed visual charts so clients could easily understand their business numbers.'
+      'Developed and maintained production-grade React.js applications in a fast-paced, on-site environment.',
+      'Integrated complex APIs and collaborated with senior engineers to optimize frontend performance.',
+      'Engineered interactive UI components that significantly improved the end-user experience.'
     ],
   },
   {
-    role: 'Community Helper',
-    company: 'Public Projects',
-    period: '2022 – 2023',
-    type: 'Global',
+    role: 'Technical Team Member',
+    company: 'Asymmetric',
+    period: 'Sep 2024 – Nov 2025',
+    type: 'Core Team',
     color: 'from-green-500 to-emerald-500',
-    border: 'border-green-500/30',
+    glowColor: 'rgba(34,197,94,0.5)', // Green glow
     bullets: [
-      'Helped fix problems in tools that other creators all around the world use.',
-      'Solved complicated issues that had been annoying people for months.',
-      'Learned how to write instructions so everyone could understand my work.'
+      'Developed critical features for club platforms, focusing on responsive design and seamless UI/UX.',
+      'Collaborated closely with designers and developers to build tools that streamlined operations.',
+      'Built a strong foundation in modern web development workflows and API architecture.'
     ],
   },
 ]
@@ -45,6 +46,8 @@ const experience = [
 const Experience = () => {
   return (
     <section id="experience" className="bg-[#030303] py-32 relative overflow-hidden">
+      
+      {/* Dynamic Background Noise */}
       <div 
         className="absolute inset-0 opacity-[0.02] pointer-events-none"
         style={{
@@ -53,63 +56,92 @@ const Experience = () => {
         }}
       />
 
-      <div className="max-w-6xl mx-auto px-6 relative z-10">
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         
-        <div className="text-center mb-24">
-          <p className="text-pink-400 text-sm uppercase tracking-[0.3em] font-bold mb-6 font-display">
-            The Timeline
+        <div className="text-center mb-40">
+          <p className="text-white/40 text-sm uppercase tracking-[0.4em] font-bold mb-6 font-display">
+            The Journey
           </p>
-          <h2 className="text-5xl md:text-7xl font-display font-black leading-tight tracking-tighter">
-            My <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-orange-500">History.</span>
+          <h2 className="text-6xl md:text-[8rem] font-display font-black leading-none tracking-tighter uppercase">
+            My <span className="text-transparent bg-clip-text bg-gradient-to-r from-white/80 to-white/20">History.</span>
           </h2>
         </div>
 
-        <div className="relative max-w-4xl mx-auto">
-          <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-white/10 md:-translate-x-1/2">
-            <div className="absolute top-0 w-full h-[30%] bg-gradient-to-b from-transparent via-orange-500 to-transparent animate-[ping_4s_ease-in-out_infinite] opacity-50" />
+        <div className="relative max-w-5xl mx-auto">
+          
+          {/* Massive Center Glowing Fiber Optic Cable */}
+          <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-[2px] bg-white/5 md:-translate-x-1/2">
+            <div className="absolute top-0 w-full h-[30%] bg-gradient-to-b from-transparent via-white to-transparent animate-[pulse_3s_ease-in-out_infinite] shadow-[0_0_30px_rgba(255,255,255,0.8)]" />
           </div>
 
-          <div className="space-y-16">
-            {experience.map((exp, i) => (
-              <div key={i} className={`relative flex flex-col md:flex-row items-start ${i % 2 === 0 ? 'md:flex-row-reverse' : ''} gap-8 md:gap-16 group`}>
-                
-                <div className="absolute left-8 md:left-1/2 top-0 -translate-x-1/2 w-4 h-4 rounded-full bg-black border-2 border-white/20 z-10 group-hover:border-orange-500 group-hover:scale-150 transition-all duration-300">
-                  <div className={`absolute inset-1 rounded-full bg-gradient-to-r ${exp.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
-                  <div className={`absolute -inset-4 rounded-full bg-gradient-to-r ${exp.color} opacity-0 group-hover:opacity-20 blur-md transition-opacity duration-300`} />
-                </div>
-
-                <div className="w-full md:w-1/2 pl-16 md:pl-0">
-                  <div className={`bg-[#080808] border ${exp.border} rounded-[2rem] p-8 md:p-10 hover:bg-[#0c0c0c] transition-colors duration-500 relative overflow-hidden`}>
-                    
-                    <div className="absolute top-0 right-0 p-6 opacity-10">
-                      <BriefcaseIcon size={64} className="text-white" />
-                    </div>
-
-                    <div className="flex items-center gap-4 mb-6">
-                      <span className="text-white/40 font-mono text-sm tracking-widest">{exp.period}</span>
-                      <span className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] text-white/70">
-                        {exp.type}
-                      </span>
-                    </div>
-
-                    <h3 className="text-3xl font-display font-black text-white mb-2">{exp.role}</h3>
-                    <p className={`text-transparent bg-clip-text bg-gradient-to-r ${exp.color} font-bold text-lg mb-8 uppercase tracking-widest font-display`}>
-                      {exp.company}
-                    </p>
-
-                    <ul className="space-y-4">
-                      {exp.bullets.map((bullet, j) => (
-                        <li key={j} className="flex items-start gap-4 text-white/50 text-sm leading-relaxed font-light">
-                          <span className="w-1.5 h-1.5 bg-white/20 rounded-full mt-2 flex-shrink-0 group-hover:bg-orange-500 transition-colors duration-300" />
-                          {bullet}
-                        </li>
-                      ))}
-                    </ul>
+          <div className="space-y-40">
+            {experience.map((exp, i) => {
+              const isEven = i % 2 === 0;
+              return (
+                <div key={i} className={`relative flex flex-col md:flex-row items-center ${isEven ? 'md:flex-row-reverse' : ''} group`}>
+                  
+                  {/* Floating Holographic Node */}
+                  <div className="absolute left-8 md:left-1/2 top-0 md:top-1/2 md:-translate-y-1/2 -translate-x-[15px] md:-translate-x-1/2 flex items-center justify-center z-20">
+                    <div 
+                      className={`w-8 h-8 rounded-full border-[4px] border-[#030303] bg-gradient-to-br ${exp.color} shadow-2xl transition-all duration-500 group-hover:scale-150 group-hover:animate-pulse`}
+                      style={{ boxShadow: `0 0 40px ${exp.glowColor}` }}
+                    />
                   </div>
-                </div>
 
-              </div>
-            ))}
+                  {/* Empty spacer for the opposite side */}
+                  <div className="hidden md:block md:w-1/2" />
+
+                  {/* Borderless Content Area */}
+                  <div className={`w-full md:w-1/2 pl-24 md:pl-0 ${isEven ? 'md:pr-24 text-left md:text-right' : 'md:pl-24 text-left'} relative`}>
+                    
+                    {/* Massive Background Watermark */}
+                    <div 
+                      className={`absolute top-1/2 -translate-y-1/2 ${isEven ? 'right-0' : 'left-0'} text-[5rem] md:text-[8rem] lg:text-[10rem] font-display font-black uppercase text-white/[0.02] whitespace-nowrap pointer-events-none group-hover:text-white/[0.04] transition-colors duration-700 z-0`}
+                    >
+                      {exp.company}
+                    </div>
+
+                    {/* Actual Content */}
+                    <div className="relative z-10">
+                      
+                      <div className={`flex flex-col ${isEven ? 'md:items-end' : 'md:items-start'} mb-6`}>
+                        <div className="flex items-center gap-4 mb-4">
+                          <BriefcaseIcon size={20} className="text-white/20 group-hover:text-white/80 transition-colors duration-500" />
+                          <span className="text-white/40 font-mono text-xs md:text-sm tracking-[0.2em] uppercase">
+                            {exp.period}
+                          </span>
+                        </div>
+                        
+                        <p className={`text-sm md:text-base font-bold tracking-[0.3em] uppercase mb-2 text-transparent bg-clip-text bg-gradient-to-r ${exp.color}`}>
+                          {exp.company} • {exp.type}
+                        </p>
+                        
+                        <h3 className="text-4xl md:text-6xl font-display font-black text-white leading-tight group-hover:scale-[1.02] transition-transform duration-500 origin-left">
+                          {exp.role}
+                        </h3>
+                      </div>
+
+                      <ul className={`space-y-6 mt-10 flex flex-col ${isEven ? 'md:items-end' : 'md:items-start'}`}>
+                        {exp.bullets.map((bullet, j) => (
+                          <li 
+                            key={j} 
+                            className={`flex items-start gap-4 text-white/50 text-lg md:text-xl leading-relaxed font-light group-hover:text-white/90 transition-colors duration-500 max-w-lg ${isEven ? 'md:flex-row-reverse text-left md:text-right' : 'text-left'}`}
+                          >
+                            <span 
+                              className={`w-2 h-2 mt-2.5 rounded-full bg-gradient-to-r ${exp.color} flex-shrink-0 opacity-50 group-hover:opacity-100 transition-opacity duration-500`}
+                              style={{ boxShadow: `0 0 15px ${exp.glowColor}` }}
+                            />
+                            <span>{bullet}</span>
+                          </li>
+                        ))}
+                      </ul>
+
+                    </div>
+                  </div>
+
+                </div>
+              )
+            })}
           </div>
         </div>
 

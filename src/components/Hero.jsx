@@ -84,12 +84,30 @@ const Hero = () => {
             <div className="absolute -right-20 -top-20 w-48 h-48 bg-pink-500/20 rounded-full blur-[80px] pointer-events-none transform translate-z-[10px]" />
             <div className="absolute -left-20 -bottom-20 w-48 h-48 bg-orange-500/20 rounded-full blur-[80px] pointer-events-none transform translate-z-[10px]" />
 
-            <div className="w-36 h-36 rounded-full bg-gradient-to-br from-orange-500 to-purple-600 mb-8 relative transform" style={{ transform: 'translateZ(60px)' }}>
-              <div className="absolute inset-1 bg-[#0a0a0a] rounded-full flex items-center justify-center shadow-[inset_0_0_20px_rgba(0,0,0,0.8)]">
-                <span className="text-5xl font-display font-black text-transparent bg-clip-text bg-gradient-to-br from-white to-white/40">AB</span>
+            <div className="w-48 h-48 rounded-full mb-8 relative transform group" style={{ transform: 'translateZ(60px)' }}>
+              {/* Outer glowing orbit rings */}
+              <div className="absolute -inset-4 bg-gradient-to-br from-orange-500 to-purple-600 rounded-full blur-xl opacity-30 group-hover:opacity-60 transition-opacity duration-700" />
+              <div className="absolute -inset-8 border border-white/10 rounded-full animate-[spin_15s_linear_infinite] border-dashed" />
+              <div className="absolute -inset-12 border border-white/5 rounded-full animate-[spin_20s_linear_infinite_reverse]" />
+              
+              {/* Profile Image Container */}
+              <div className="relative w-full h-full rounded-full p-1 bg-gradient-to-br from-orange-500 to-purple-600 shadow-[0_0_40px_rgba(0,0,0,0.8)]">
+                <div className="w-full h-full rounded-full overflow-hidden bg-[#050505] relative">
+                  <img 
+                    src="/src/assets/hero.jpg" 
+                    alt="Aarya Balan" 
+                    className="w-full h-full object-cover transform scale-[1.05] group-hover:scale-100 transition-transform duration-700 select-none pointer-events-none"
+                  />
+                  {/* Subtle inner glass reflection */}
+                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                </div>
               </div>
-              <div className="absolute -inset-4 border border-white/10 rounded-full animate-[spin_10s_linear_infinite] border-dashed" />
-              <div className="absolute -top-1 -right-1 bg-green-500 w-4 h-4 rounded-full border-2 border-black" />
+
+              {/* Live Status Ping */}
+              <div className="absolute bottom-3 right-3 z-10 flex h-6 w-6">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-6 w-6 border-4 border-[#0a0a0a] bg-green-500"></span>
+              </div>
             </div>
 
             <h2 className="text-3xl font-display font-black text-white transform tracking-tight" style={{ transform: 'translateZ(40px)' }}>
