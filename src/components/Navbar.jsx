@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { MenuIcon, XIcon, ArrowRightIcon } from './Icons'
 
-const Navbar = () => {
+const Navbar = ({ currentPage, setCurrentPage }) => {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
 
@@ -12,12 +12,17 @@ const Navbar = () => {
   }, [])
 
   const links = [
-    { label: 'About', href: '#about' },
-    { label: 'Projects', href: '#projects' },
-    { label: 'Skills', href: '#skills' },
-    { label: 'Experience', href: '#experience' },
-    { label: 'Contact', href: '#contact' },
+    { id: 'about', label: 'About' },
+    { id: 'projects', label: 'Projects' },
+    { id: 'skills', label: 'Skills' },
+    { id: 'experience', label: 'Experience' },
+    { id: 'contact', label: 'Contact' },
   ]
+
+  const handleNav = (id) => {
+    setCurrentPage(id)
+    setMenuOpen(false)
+  }
 
   return (
     <nav 
@@ -33,7 +38,7 @@ const Navbar = () => {
         }`}
       >
         {/* Logo */}
-        <a href="#home" className="flex items-center gap-3 group relative z-10">
+        <button onClick={() => handleNav('home')} className="flex items-center gap-3 group relative z-10 cursor-pointer">
           <div className="relative flex items-center justify-center w-10 h-10 bg-orange-500 rounded-full overflow-hidden transition-transform duration-300 group-hover:scale-110">
             <span className="text-black font-display font-black text-lg">A</span>
             <div className="absolute inset-0 border-2 border-white/20 rounded-full scale-150 group-hover:scale-100 transition-transform duration-500" />
@@ -41,18 +46,20 @@ const Navbar = () => {
           <span className="text-white font-display font-bold text-lg tracking-widest uppercase hidden sm:block">
             Balan<span className="text-orange-500">.</span>
           </span>
-        </a>
+        </button>
 
         {/* Desktop links - Center Pill */}
         <div className="hidden md:flex items-center gap-1 bg-white/5 border border-white/10 rounded-full p-1 backdrop-blur-md">
           {links.map(link => (
-            <a
-              key={link.label}
-              href={link.href}
-              className="text-white/50 hover:text-white hover:bg-white/10 text-xs font-display font-bold uppercase tracking-[0.15em] px-5 py-2.5 rounded-full transition-all duration-300"
+            <button
+              key={link.id}
+              onClick={() => handleNav(link.id)}
+              className={`text-xs font-display font-bold uppercase tracking-[0.15em] px-5 py-2.5 rounded-full transition-all duration-300 ${
+                currentPage === link.id ? 'text-black bg-white shadow-[0_0_15px_rgba(255,255,255,0.5)]' : 'text-white/50 hover:text-white hover:bg-white/10'
+              }`}
             >
               {link.label}
-            </a>
+            </button>
           ))}
         </div>
 
@@ -82,15 +89,16 @@ const Navbar = () => {
       >
         <div className="flex flex-col items-center gap-6">
           {links.map((link, i) => (
-            <a
-              key={link.label}
-              href={link.href}
-              onClick={() => setMenuOpen(false)}
-              className="text-4xl font-display font-black text-white/50 hover:text-white uppercase tracking-widest transition-all duration-300 hover:scale-110"
+            <button
+              key={link.id}
+              onClick={() => handleNav(link.id)}
+              className={`text-4xl font-display font-black uppercase tracking-widest transition-all duration-300 hover:scale-110 ${
+                currentPage === link.id ? 'text-orange-500' : 'text-white/50 hover:text-white'
+              }`}
               style={{ transitionDelay: `${i * 50}ms`, transform: menuOpen ? 'translateY(0)' : 'translateY(20px)', opacity: menuOpen ? 1 : 0 }}
             >
               {link.label}
-            </a>
+            </button>
           ))}
           <a 
             href="#" 

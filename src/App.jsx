@@ -51,9 +51,50 @@ const CustomCursor = () => {
 
 const App = () => {
   const [unlocked, setUnlocked] = useState(false)
+  const [currentPage, setCurrentPage] = useState('home')
+  const [isTransitioning, setIsTransitioning] = useState(false)
+
+  const handlePageChange = (page) => {
+    if (page === currentPage) return;
+    setIsTransitioning(true)
+    setTimeout(() => {
+      setCurrentPage(page)
+      window.scrollTo(0, 0)
+      setIsTransitioning(false)
+    }, 400) // Match fade out duration
+  }
+
+  const renderPage = () => {
+    switch(currentPage) {
+      case 'home': 
+        return <Hero setCurrentPage={handlePageChange} />;
+      case 'about': 
+        return <About />;
+      case 'projects': 
+        return <Projects />;
+      case 'skills': 
+        return (
+          <>
+            <Skills />
+            <Activity />
+          </>
+        );
+      case 'experience': 
+        return (
+          <>
+            <Experience />
+            <Testimonials />
+          </>
+        );
+      case 'contact': 
+        return <Contact />;
+      default: 
+        return <Hero setCurrentPage={handlePageChange} />;
+    }
+  }
 
   return (
-    <div className="bg-[#030303] min-h-screen text-white overflow-hidden relative selection:bg-orange-500/30 selection:text-white">
+    <div className="bg-[#030303] min-h-screen text-white overflow-hidden relative selection:bg-orange-500/30 selection:text-white flex flex-col">
       {/* Global Cinematic Noise Overlay */}
       <div className="bg-noise" />
       
@@ -65,18 +106,17 @@ const App = () => {
       {!unlocked ? (
         <PasswordGate onUnlock={() => setUnlocked(true)} />
       ) : (
-        <div className="relative z-10 animate-[fadeIn_1s_ease-out]">
-          <Navbar />
-          <Hero />
-          <About />
-          <Projects />
-          <Skills />
-          <Activity />
-          <Experience />
-          <Testimonials />
-          <Contact />
-          <Footer />
-        </div>
+        <>
+          <Navbar currentPage={currentPage} setCurrentPage={handlePageChange} />
+          
+          <main className={`relative z-10 flex-grow flex flex-col transition-all duration-500 ease-in-out ${isTransitioning ? 'opacity-0 scale-[0.98] blur-sm translate-y-4' : 'opacity-100 scale-100 blur-0 translate-y-0'}`}>
+            {renderPage()}
+            
+            <div className="mt-auto">
+              <Footer />
+            </div>
+          </main>
+        </>
       )}
 
       <style>{`

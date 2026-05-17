@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { ArrowRightIcon, DownloadIcon, SparkleIcon, GitHubIcon, LinkedInIcon, InstagramIcon } from './Icons'
 
-const Hero = () => {
+const Hero = ({ setCurrentPage }) => {
   const [mouse, setMouse] = useState({ x: 0, y: 0 })
 
   const handleMouseMove = (e) => {
@@ -54,12 +54,15 @@ const Hero = () => {
           </p>
 
           <div className="flex flex-wrap gap-5 pt-4 animate-[fadeIn_1s_ease-out_0.8s_both]">
-            <a href="#projects" className="relative inline-flex group overflow-hidden rounded-full p-[1px]">
+            <button 
+              onClick={() => setCurrentPage?.('projects')} 
+              className="relative inline-flex group overflow-hidden rounded-full p-[1px]"
+            >
               <span className="absolute inset-0 bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 rounded-full opacity-70 group-hover:opacity-100 animate-[spin_3s_linear_infinite]" />
               <span className="relative inline-flex items-center justify-center gap-3 bg-black px-8 py-4.5 rounded-full text-sm font-bold uppercase tracking-[0.15em] font-display text-white transition-all duration-300 group-hover:bg-black/40 backdrop-blur-md">
                 See My Work <ArrowRightIcon size={16} />
               </span>
-            </a>
+            </button>
             
             <div className="flex items-center gap-6 pl-4">
               {[
