@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ArrowRightIcon, DownloadIcon, SparkleIcon, GitHubIcon, LinkedInIcon, InstagramIcon } from './Icons'
+import { ArrowRightIcon, DownloadIcon, SparkleIcon, GitHubIcon, LinkedInIcon, LeetCodeIcon } from './Icons'
 
 const Hero = ({ setCurrentPage }) => {
   const [mouse, setMouse] = useState({ x: 0, y: 0 })
@@ -66,10 +66,11 @@ const Hero = ({ setCurrentPage }) => {
             
             <div className="flex items-center gap-6 pl-4">
               {[
-                { label: 'GitHub', icon: <GitHubIcon size={20} /> },
-                { label: 'LinkedIn', icon: <LinkedInIcon size={20} /> },
+                { label: 'GitHub', icon: <GitHubIcon size={20} />, href: 'https://github.com/AaryaBalan' },
+                { label: 'LinkedIn', icon: <LinkedInIcon size={20} />, href: 'https://www.linkedin.com/in/aaryabalan/' },
+                { label: 'LeetCode', icon: <LeetCodeIcon size={20} />, href: 'https://leetcode.com/u/_aarya_/' },
               ].map(s => (
-                <a key={s.label} href="#" aria-label={s.label} className="text-white/30 hover:text-white transition-all duration-300 hover:scale-125 transform">
+                <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label} className="text-white/30 hover:text-white transition-all duration-300 hover:scale-125 transform">
                   {s.icon}
                 </a>
               ))}
