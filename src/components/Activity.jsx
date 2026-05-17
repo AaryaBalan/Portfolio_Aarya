@@ -154,17 +154,17 @@ const Activity = () => {
   }
 
   return (
-    <section id="activity" className="bg-[#030303] py-32 relative overflow-hidden">
+    <section id="activity" className="bg-[#030303] py-20 sm:py-32 relative overflow-hidden">
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-green-600/5 rounded-full blur-[150px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-cyan-600/5 rounded-full blur-[150px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 relative z-10">
         
-        <div className="text-center mb-24">
-          <p className="text-white/40 text-sm uppercase tracking-[0.3em] font-bold mb-6 font-display">
+        <div className="text-center mb-12 sm:mb-24">
+          <p className="text-white/40 text-xs sm:text-sm uppercase tracking-[0.3em] font-bold mb-4 sm:mb-6 font-display">
             The Matrix
           </p>
-          <h2 className="text-5xl md:text-7xl font-display font-black leading-tight tracking-tighter">
+          <h2 className="text-4xl sm:text-5xl md:text-7xl font-display font-black leading-tight tracking-tighter">
             Data <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-yellow-400 to-cyan-400">Streams.</span>
           </h2>
         </div>
@@ -172,7 +172,7 @@ const Activity = () => {
         <div className="space-y-16">
           
           {/* Engineering Output Grid (Live Data) */}
-          <div className="bg-[#080808] border border-white/10 rounded-[2.5rem] p-8 md:p-12 hover:border-green-500/30 transition-colors duration-500 group relative overflow-hidden">
+          <div className="bg-[#080808] border border-white/10 rounded-[1.8rem] sm:rounded-[2.5rem] p-5 sm:p-8 md:p-12 hover:border-green-500/30 transition-colors duration-500 group relative overflow-hidden">
             <div className="absolute top-0 right-0 p-10 opacity-[0.03] group-hover:opacity-10 transition-opacity duration-500 group-hover:scale-110 transform">
               <CodeIcon size={120} />
             </div>
@@ -229,7 +229,7 @@ const Activity = () => {
           </div>
 
           {/* Portfolio Views (Mock Data) */}
-          <div className="bg-[#080808] border border-white/10 rounded-[2.5rem] p-8 md:p-12 hover:border-cyan-500/30 transition-colors duration-500 group relative overflow-hidden">
+          <div className="bg-[#080808] border border-white/10 rounded-[1.8rem] sm:rounded-[2.5rem] p-5 sm:p-8 md:p-12 hover:border-cyan-500/30 transition-colors duration-500 group relative overflow-hidden">
             <div className="absolute top-0 right-0 p-10 opacity-[0.03] group-hover:opacity-10 transition-opacity duration-500 group-hover:scale-110 transform">
               <EyeIcon size={120} />
             </div>

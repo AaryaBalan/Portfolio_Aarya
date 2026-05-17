@@ -6,7 +6,7 @@ import About from './components/About'
 import Projects from './components/Projects'
 import Skills from './components/Skills'
 import Activity from './components/Activity'
-import Testimonials from './components/Testimonials'
+
 import Experience from './components/Experience'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
@@ -17,6 +17,7 @@ const CustomCursor = () => {
 
   useEffect(() => {
     const handleMouseMove = (e) => {
+      if (window.innerWidth < 1024) return;
       setPos({ x: e.clientX, y: e.clientY })
       const target = e.target
       // Detect if hovering over clickable elements
@@ -29,7 +30,7 @@ const CustomCursor = () => {
 
       setIsPointer(isClickable)
     }
-    window.addEventListener('mousemove', handleMouseMove)
+    window.addEventListener('mousemove', handleMouseMove, { passive: true })
     return () => window.removeEventListener('mousemove', handleMouseMove)
   }, [])
 
@@ -80,12 +81,7 @@ const App = () => {
           </>
         );
       case 'experience':
-        return (
-          <>
-            <Experience />
-            <Testimonials />
-          </>
-        );
+        return <Experience />;
       case 'contact':
         return <Contact />;
       default:
@@ -94,7 +90,7 @@ const App = () => {
   }
 
   return (
-    <div className="bg-[#030303] min-h-screen text-white overflow-hidden relative selection:bg-orange-500/30 selection:text-white flex flex-col">
+    <div className="bg-[#030303] min-h-screen text-white overflow-x-hidden relative selection:bg-orange-500/30 selection:text-white flex flex-col">
       {/* Global Cinematic Noise Overlay */}
       <div className="bg-noise" />
 

@@ -8,7 +8,7 @@ const projects = [
     description: 'A social alarm experience where you never wake up alone. Pair with a friend, hit "I\'m Awake", and trigger an instant call. Features shared streaks, leaderboards, and wake-up analytics.',
     tags: ['Social App', 'Real-time', 'AdMob Integration'],
     color: 'from-orange-500 to-pink-500',
-    link: 'https://www.youtube.com/watch?v=pam_hI4dpRw', 
+    link: 'https://www.youtube.com/watch?v=pam_hI4dpRw',
     github: 'https://github.com/AaryaBalan/WakeupBuddy'
   },
   {
@@ -41,7 +41,7 @@ const projects = [
   {
     title: 'LetItOut',
     subtitle: 'Empathetic Community Platform',
-    description: 'A secure, community-driven application designed for emotional expression and mental wellness support. Users can safely share their thoughts and receive encouragement from a supportive network. The platform features a gamified reputation system, awarding unique badges to contributors who actively uplift and console others.',
+    description: 'A secure, community-driven application for emotional expression and mental wellness. Features a gamified reputation system awarding badges to contributors who actively uplift and console others.',
     tags: ['Mental Wellness', 'Community App', 'Gamification'],
     color: 'from-pink-500 to-rose-500',
     link: '#',
@@ -50,7 +50,7 @@ const projects = [
   {
     title: 'TrackMyVibe',
     subtitle: 'Expressive Mood Tracking Platform',
-    description: 'An interactive daily journaling application enabling users to log emotional states with contextual tags. Features a "Memory Lane" algorithm surfacing historical entries from exactly one year prior, and engaging micro-animations to reward positive milestones.',
+    description: 'An interactive daily journaling app enabling users to log emotional states with contextual tags. Features a "Memory Lane" algorithm surfacing entries from exactly one year prior.',
     tags: ['React.js', 'Express', 'MongoDB', 'Tailwind CSS'],
     color: 'from-yellow-400 to-orange-500',
     link: 'https://www.linkedin.com/in/aaryabalan/details/projects/',
@@ -63,8 +63,7 @@ const Projects = () => {
   const [touchStart, setTouchStart] = useState(null)
   const [touchEnd, setTouchEnd] = useState(null)
 
-  // Minimum swipe distance
-  const minSwipeDistance = 50 
+  const minSwipeDistance = 50
 
   const onTouchStart = (e) => {
     setTouchEnd(null)
@@ -76,46 +75,39 @@ const Projects = () => {
   const onTouchEnd = () => {
     if (!touchStart || !touchEnd) return
     const distance = touchStart - touchEnd
-    const isLeftSwipe = distance > minSwipeDistance
-    const isRightSwipe = distance < -minSwipeDistance
-
-    if (isLeftSwipe) {
-      nextCard()
-    }
-    if (isRightSwipe) {
-      prevCard()
-    }
+    if (distance > minSwipeDistance) nextCard()
+    if (distance < -minSwipeDistance) prevCard()
   }
 
-  const nextCard = () => {
-    setCurrentIndex((prev) => (prev + 1) % projects.length)
-  }
-
-  const prevCard = () => {
-    setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length)
-  }
+  const nextCard = () => setCurrentIndex((prev) => (prev + 1) % projects.length)
+  const prevCard = () => setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length)
 
   return (
-    <section id="projects" className="min-h-screen bg-[#030303] flex items-center justify-center relative overflow-hidden pt-20 pb-10">
-      
-      {/* Background Glow */}
-      <div className={`absolute inset-0 opacity-20 transition-colors duration-1000 bg-gradient-to-br ${projects[currentIndex].color}`} />
+    <section
+      id="projects"
+      className="min-h-screen bg-[#030303] flex items-center justify-center relative overflow-hidden pt-24 pb-10"
+    >
+      {/* Background gradient glow */}
+      <div
+        className={`absolute inset-0 opacity-20 transition-colors duration-1000 bg-gradient-to-br ${projects[currentIndex].color}`}
+      />
 
-      <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 relative z-10 flex flex-col items-center">
-        
-        <h2 className="text-3xl md:text-5xl font-display font-black text-white mb-10 text-center tracking-tight">
+      <div className="w-full max-w-lg mx-auto px-4 sm:px-6 relative z-10 flex flex-col items-center">
+
+        {/* Section heading */}
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-black text-white mb-6 sm:mb-10 text-center tracking-tight">
           Featured Creations.
         </h2>
 
-        {/* Story Progress Bars */}
-        <div className="flex w-full gap-2 mb-6 max-w-lg">
+        {/* Progress bars */}
+        <div className="flex w-full gap-1.5 sm:gap-2 mb-5 sm:mb-6">
           {projects.map((_, idx) => (
-            <div 
-              key={idx} 
-              className="h-1.5 flex-1 rounded-full bg-white/20 overflow-hidden cursor-pointer"
+            <div
+              key={idx}
+              className="h-1 sm:h-1.5 flex-1 rounded-full bg-white/20 overflow-hidden cursor-pointer"
               onClick={() => setCurrentIndex(idx)}
             >
-              <div 
+              <div
                 className={`h-full bg-white transition-all duration-300 ${
                   idx === currentIndex ? 'w-full' : idx < currentIndex ? 'w-full opacity-50' : 'w-0'
                 }`}
@@ -124,102 +116,112 @@ const Projects = () => {
           ))}
         </div>
 
-        {/* Swipeable Card Container */}
-        <div 
-          className="relative w-full max-w-lg aspect-[3/4] md:aspect-[4/5] perspective-1000 select-none"
+        {/* Card stack */}
+        <div
+          className="relative w-full select-none"
+          style={{ height: 'clamp(420px, 72vw, 520px)' }}
           onTouchStart={onTouchStart}
           onTouchMove={onTouchMove}
           onTouchEnd={onTouchEnd}
         >
           {projects.map((p, idx) => {
-            // Calculate relative position for stacking effect
-            // We use modulo arithmetic to allow wrapping around the stack
-            const total = projects.length;
-            let offset = (idx - currentIndex + total) % total;
-            
-            // If it's the "previous" card (just swiped away), we'll animate it sliding left
-            // For simplicity, we just look at the raw difference for the exit animation
-            let isPrev = (currentIndex === 0 && idx === total - 1) || (idx === currentIndex - 1);
-            
-            let isActive = offset === 0;
-            let isNext1 = offset === 1;
-            let isNext2 = offset === 2;
+            const total = projects.length
+            const offset = (idx - currentIndex + total) % total
+            const isPrev = (currentIndex === 0 && idx === total - 1) || (idx === currentIndex - 1)
 
-            // Base styling for all cards
-            let transformStyle = '';
-            let opacityStyle = '';
-            let zIndexStyle = '';
+            const isActive = offset === 0
+            const isNext1 = offset === 1
+            const isNext2 = offset === 2
+
+            let transform = ''
+            let opacity = ''
+            let zIndex = ''
 
             if (isActive) {
-              transformStyle = 'translate-x-0 translate-y-0 scale-100 rotate-0';
-              opacityStyle = 'opacity-100';
-              zIndexStyle = 'z-40';
+              transform = 'translate-x-0 translate-y-0 scale-100 rotate-0'
+              opacity = 'opacity-100'
+              zIndex = 'z-40'
             } else if (isNext1) {
-              // Fanned out to the right slightly, rotated to show the top right corner
-              transformStyle = 'translate-x-[15%] translate-y-[5%] scale-95 rotate-3';
-              opacityStyle = 'opacity-70';
-              zIndexStyle = 'z-30';
+              transform = 'translate-x-[10%] translate-y-[3%] scale-[0.96] rotate-2'
+              opacity = 'opacity-70'
+              zIndex = 'z-30'
             } else if (isNext2) {
-              // Fanned out further to the right, rotated more to show even more corner
-              transformStyle = 'translate-x-[30%] translate-y-[10%] scale-90 rotate-6';
-              opacityStyle = 'opacity-40';
-              zIndexStyle = 'z-20';
+              transform = 'translate-x-[20%] translate-y-[6%] scale-[0.92] rotate-4'
+              opacity = 'opacity-40'
+              zIndex = 'z-20'
             } else if (isPrev) {
-              // Card sliding out to the left
-              transformStyle = '-translate-x-[120%] translate-y-[10%] scale-90 rotate-[-10deg]';
-              opacityStyle = 'opacity-0';
-              zIndexStyle = 'z-50'; // Keep it above while exiting
+              transform = '-translate-x-[110%] translate-y-[5%] scale-90 -rotate-6'
+              opacity = 'opacity-0'
+              zIndex = 'z-50'
             } else {
-              // Hidden deep in the stack
-              transformStyle = 'translate-x-[45%] translate-y-[15%] scale-85 rotate-9';
-              opacityStyle = 'opacity-0';
-              zIndexStyle = 'z-10';
+              transform = 'translate-x-[30%] translate-y-[9%] scale-[0.88] rotate-6'
+              opacity = 'opacity-0'
+              zIndex = 'z-10'
             }
-            
+
             return (
-              <div 
+              <div
                 key={idx}
-                className={`absolute inset-0 w-full h-full rounded-[2.5rem] bg-[#0a0a0a] border border-white/10 p-8 md:p-12 flex flex-col justify-between transition-all duration-700 ease-out shadow-2xl ${zIndexStyle} ${opacityStyle} ${transformStyle} ${isActive ? 'pointer-events-auto cursor-auto' : 'pointer-events-none'}`}
+                className={`absolute inset-0 w-full h-full rounded-[1.8rem] sm:rounded-[2.5rem] bg-[#0a0a0a] border border-white/10 flex flex-col justify-between transition-all duration-700 ease-out shadow-2xl ${zIndex} ${opacity} ${transform} ${isActive ? 'pointer-events-auto' : 'pointer-events-none'}`}
               >
-                {/* Header */}
-                <div className="flex justify-between items-start">
-                  <div>
-                    <span className={`inline-block text-[10px] font-bold uppercase tracking-[0.2em] mb-4 bg-gradient-to-r ${p.color} text-transparent bg-clip-text`}>
-                      {p.subtitle}
-                    </span>
-                    <h3 className="text-4xl md:text-5xl font-display font-black text-white leading-tight">
-                      {p.title}
-                    </h3>
-                  </div>
-                  <span className="text-6xl font-display font-black text-white/5">{`0${idx + 1}`}</span>
-                </div>
+                {/* Inner padding wrapper */}
+                <div className="flex flex-col h-full p-5 sm:p-8">
 
-                {/* Body */}
-                <p className="text-lg md:text-xl text-white/50 leading-relaxed font-light my-8">
-                  {p.description}
-                </p>
-
-                {/* Footer */}
-                <div className="mt-auto space-y-8">
-                  <div className="flex flex-wrap gap-2">
-                    {p.tags.map(tag => (
-                      <span key={tag} className="text-xs bg-white/5 text-white/70 px-4 py-2 rounded-full font-medium">
-                        {tag}
+                  {/* Header */}
+                  <div className="flex justify-between items-start mb-3 sm:mb-5">
+                    <div className="flex-1 min-w-0 pr-3">
+                      <span className={`inline-block text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.2em] mb-1.5 sm:mb-3 bg-gradient-to-r ${p.color} text-transparent bg-clip-text`}>
+                        {p.subtitle}
                       </span>
-                    ))}
+                      <h3 className="text-2xl sm:text-3xl md:text-4xl font-display font-black text-white leading-tight">
+                        {p.title}
+                      </h3>
+                    </div>
+                    <span className="text-4xl sm:text-5xl font-display font-black text-white/5 flex-shrink-0">{`0${idx + 1}`}</span>
                   </div>
-                  
-                  <div className="flex items-center gap-4">
-                    {p.link !== '#' && (
-                      <a href={p.link} target="_blank" rel="noopener noreferrer" className={`flex-1 bg-white text-black font-bold uppercase tracking-widest text-xs py-4 rounded-full flex items-center justify-center gap-2 transition-transform ${isActive ? 'hover:scale-105' : ''}`}>
-                        <ExternalLinkIcon size={16} /> View Live
-                      </a>
-                    )}
-                    {p.github !== '#' && (
-                      <a href={p.github} target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-white hover:bg-white hover:text-black transition-colors">
-                        <CodeIcon size={20} />
-                      </a>
-                    )}
+
+                  {/* Description */}
+                  <p className="text-sm sm:text-base text-white/50 leading-relaxed font-light flex-1 overflow-y-auto pr-0.5 min-h-0">
+                    {p.description}
+                  </p>
+
+                  {/* Footer */}
+                  <div className="mt-4 sm:mt-6 space-y-3 sm:space-y-5 flex-shrink-0">
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                      {p.tags.map(tag => (
+                        <span
+                          key={tag}
+                          className="text-[9px] sm:text-[10px] bg-white/5 text-white/60 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full font-semibold tracking-wide"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Action buttons */}
+                    <div className="flex items-center gap-3">
+                      {p.link !== '#' && (
+                        <a
+                          href={p.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`flex-1 bg-white text-black font-bold uppercase tracking-wider text-[10px] sm:text-xs py-2.5 sm:py-3.5 rounded-full flex items-center justify-center gap-2 transition-transform ${isActive ? 'active:scale-95' : ''}`}
+                        >
+                          <ExternalLinkIcon size={13} /> View Live
+                        </a>
+                      )}
+                      {p.github !== '#' && (
+                        <a
+                          href={p.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-9 h-9 sm:w-11 sm:h-11 bg-white/10 rounded-full flex items-center justify-center text-white hover:bg-white hover:text-black transition-colors flex-shrink-0"
+                        >
+                          <CodeIcon size={16} />
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -227,22 +229,22 @@ const Projects = () => {
           })}
         </div>
 
-        {/* Controls */}
-        <div className="flex items-center gap-6 mt-10">
-          <button 
+        {/* Navigation controls */}
+        <div className="flex items-center gap-5 sm:gap-6 mt-6 sm:mt-10">
+          <button
             onClick={prevCard}
-            className="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center text-white/50 hover:text-white hover:bg-white/10 transition-colors rotate-180"
+            className="w-11 h-11 sm:w-14 sm:h-14 rounded-full border border-white/20 flex items-center justify-center text-white/50 hover:text-white hover:bg-white/10 transition-colors rotate-180 active:scale-90"
           >
-            <ArrowRightIcon size={24} />
+            <ArrowRightIcon size={20} />
           </button>
-          <span className="text-xs font-mono tracking-widest uppercase text-white/40">
-            Swipe or Click
+          <span className="text-[10px] sm:text-xs font-mono tracking-widest uppercase text-white/30">
+            Swipe or click
           </span>
-          <button 
+          <button
             onClick={nextCard}
-            className={`w-14 h-14 rounded-full flex items-center justify-center text-white transition-all duration-300 hover:scale-110 shadow-lg bg-gradient-to-r ${projects[currentIndex].color}`}
+            className={`w-11 h-11 sm:w-14 sm:h-14 rounded-full flex items-center justify-center text-white transition-all duration-300 active:scale-90 shadow-lg bg-gradient-to-r ${projects[currentIndex].color}`}
           >
-            <ArrowRightIcon size={24} />
+            <ArrowRightIcon size={20} />
           </button>
         </div>
 
