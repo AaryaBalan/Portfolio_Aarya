@@ -17,9 +17,9 @@ const Hero = () => {
       className="min-h-screen bg-[#030303] flex items-center relative overflow-hidden pt-20"
       onMouseMove={handleMouseMove}
     >
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden select-none opacity-[0.15]">
-        <h1 className="text-[20vw] font-display font-black leading-none text-stroke whitespace-nowrap tracking-tighter">
-          WEB CREATOR
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden select-none opacity-[0.10]">
+        <h1 className="text-[15vw] font-display font-black leading-none text-stroke whitespace-nowrap tracking-tighter">
+          ENGINEER
         </h1>
       </div>
 
@@ -38,19 +38,19 @@ const Hero = () => {
             <span className="inline-flex items-center gap-3 border border-white/10 bg-black/50 backdrop-blur-md rounded-full px-5 py-2.5">
               <span className="w-2 h-2 bg-orange-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(249,115,22,0.8)]" />
               <span className="text-xs uppercase tracking-[0.2em] font-bold text-white/70 font-display">
-                Ready to work together
+                Available for software engineering roles
               </span>
             </span>
           </div>
 
-          <h1 className="text-6xl md:text-[5.5rem] lg:text-[7rem] font-display font-black leading-[0.9] tracking-tighter animate-[fadeIn_1s_ease-out_0.4s_both]">
-            <span className="block text-white/30 hover:text-white transition-colors duration-500">I BUILD</span>
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 pb-2">WEBSITES</span>
-            <span className="block text-white filter drop-shadow-[0_0_30px_rgba(255,255,255,0.2)]">THAT STAND OUT.</span>
+          <h1 className="text-5xl md:text-[5.5rem] lg:text-[6.5rem] font-display font-black leading-[0.95] tracking-tighter animate-[fadeIn_1s_ease-out_0.4s_both]">
+            <span className="block text-white/30 hover:text-white transition-colors duration-500">BUILDING</span>
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 pb-2">SCALABLE</span>
+            <span className="block text-white filter drop-shadow-[0_0_30px_rgba(255,255,255,0.2)]">SOFTWARE.</span>
           </h1>
 
-          <p className="text-lg md:text-xl text-white/50 max-w-lg font-light leading-relaxed animate-[fadeIn_1s_ease-out_0.6s_both]">
-            Not just another portfolio. This is what happens when <strong className="text-white/90 font-medium">creativity meets problem solving</strong> and coffee meets late nights. No boring templates. Just custom work.
+          <p className="text-lg md:text-xl text-white/50 max-w-xl font-light leading-relaxed animate-[fadeIn_1s_ease-out_0.6s_both]">
+            Full-Stack Software Engineer passionate about crafting <strong className="text-white/90 font-medium">robust architectures, responsive frontends, and high-performance databases.</strong> Bridging the gap between complex backend logic and seamless user experiences.
           </p>
 
           <div className="flex flex-wrap gap-5 pt-4 animate-[fadeIn_1s_ease-out_0.8s_both]">
@@ -113,12 +113,12 @@ const Hero = () => {
             <h2 className="text-3xl font-display font-black text-white transform tracking-tight" style={{ transform: 'translateZ(40px)' }}>
               Aarya Balan
             </h2>
-            <p className="text-orange-400/90 text-xs font-bold uppercase tracking-[0.3em] mt-3 transform" style={{ transform: 'translateZ(30px)' }}>
-              Web Creator
+            <p className="text-orange-400/90 text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] mt-3 transform text-center" style={{ transform: 'translateZ(30px)' }}>
+              Full-Stack Engineer
             </p>
 
-            <p className="text-white/40 text-center text-sm mt-6 leading-relaxed transform" style={{ transform: 'translateZ(20px)' }}>
-              Making digital ideas come to life. Sometimes it even works on the first try.
+            <p className="text-white/40 text-center text-sm mt-4 leading-relaxed transform px-2" style={{ transform: 'translateZ(20px)' }}>
+              Building end-to-end software from architecture to deployment.
             </p>
 
             <div className="mt-auto w-full transform" style={{ transform: 'translateZ(50px)' }}>
