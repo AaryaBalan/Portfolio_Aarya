@@ -16,7 +16,7 @@ const MailIcon = ({ size = 28, className = '' }) => (
 
 const Contact = () => {
   const emailAddress = 'aaryabalan2006@gmail.com'
-  const phoneNumber = '+91 98401 23456' // Clean, professional Indian mobile format placeholder
+  const phoneNumber = '+91 7200611307' // Clean, professional Indian mobile format placeholder
 
   return (
     <section 
