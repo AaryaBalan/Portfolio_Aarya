@@ -12,8 +12,11 @@ const experience = [
     bullets: [
       'Leading the technical development and architecture for the club\'s core digital platforms.',
       'Mentoring developers, overseeing code reviews, and ensuring high-quality project delivery.',
-      'Architecting React.js applications with robust API integrations for scalable performance.'
+      'Architecting React.js applications with robust API integrations for scalable performance.',
+      'Led the technical team to develop and deploy the symposium’s digital infrastructure. Engineered a gamified reverse-coding challenge platform to drive participant engagement and problem-solving.',
+      'Managed technical infrastructure and real-time support for a 48-hour hackathon, ensuring smooth event execution.'
     ],
+    tags: ['Team Leadership', 'Project Management', 'Mentorship', 'System Architecture', 'React.js', 'Node.js']
   },
   {
     role: 'Full Stack Intern',
@@ -27,6 +30,7 @@ const experience = [
       'Integrated complex APIs and collaborated with senior engineers to optimize frontend performance.',
       'Engineered interactive UI components that significantly improved the end-user experience.'
     ],
+    tags: ['JavaScript', 'Python', 'React.js', 'Node.js', 'Express.js', 'PostgreSQL', 'Frontend Optimization', 'Agile']
   },
   {
     role: 'Technical Team Member',
@@ -40,6 +44,7 @@ const experience = [
       'Collaborated closely with designers and developers to build tools that streamlined operations.',
       'Built a strong foundation in modern web development workflows and API architecture.'
     ],
+    tags: ['UI/UX Design', 'JavaScript', 'Tailwind CSS', 'Git', 'Responsive Design']
   },
   {
     role: 'Event Organizer & Speaker',
@@ -53,6 +58,21 @@ const experience = [
       'Delivered engaging keynotes to an expansive junior audience (Catapult 26), articulating strategic vision and fostering active community participation.',
       'Acted as a core representative of the leadership board, navigating high-stakes logistical challenges through decisive action and cross-functional collaboration.'
     ],
+    tags: ['Public Speaking', 'Event Management', 'Event Organization', 'Logistics', 'Sponsorships', 'Networking', 'Communication']
+  },
+  {
+    role: 'Co-Founder & Developer',
+    company: 'Asteroid Teams',
+    period: '2023 – 2024',
+    type: 'Startup',
+    color: 'from-yellow-500 to-amber-500',
+    glowColor: 'rgba(234,179,8,0.5)', 
+    bullets: [
+      'Co-founded a software startup dedicated to designing and developing affordable, high-quality web applications and websites tailored for students.',
+      'Spearheaded the engineering of scalable Software as a Service (SaaS) architectures, managing end-to-end frontend and backend operations.',
+      'Navigated the full startup lifecycle, gaining critical insights into product development, business strategy, and client relations before strategically concluding operations in 2024.'
+    ],
+    tags: ['Entrepreneurship', 'SaaS Development', 'Full Stack', 'Business Strategy', 'Web Apps']
   },
 ]
 
@@ -101,8 +121,17 @@ const Experience = () => {
                     />
                   </div>
 
-                  {/* Empty spacer for the opposite side */}
-                  <div className="hidden md:block md:w-1/2" />
+                  {/* Skills/Tags on the opposite side */}
+                  <div className={`hidden md:flex md:w-1/2 flex-wrap gap-3 content-center px-12 ${isEven ? 'justify-start' : 'justify-end'} opacity-0 group-hover:opacity-100 transition-all duration-700 -translate-y-4 group-hover:translate-y-0`}>
+                    {exp.tags && exp.tags.map((tag, tIdx) => (
+                      <span 
+                        key={tIdx} 
+                        className={`px-4 py-2 rounded-full bg-[#080808] border border-white/10 text-white/60 text-sm font-bold tracking-wider hover:text-white transition-colors duration-300 shadow-xl`}
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
 
                   {/* Borderless Content Area */}
                   <div className={`w-full md:w-1/2 pl-24 md:pl-0 ${isEven ? 'md:pr-24 text-left md:text-right' : 'md:pl-24 text-left'} relative`}>

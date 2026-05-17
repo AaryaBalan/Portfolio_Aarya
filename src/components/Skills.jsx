@@ -28,6 +28,9 @@ const skillGroups = [
       { name: 'Vue.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg' },
       { name: 'React Native', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg' },
       { name: 'Material UI', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/materialui/materialui-original.svg' },
+      { name: 'Chart.js', icon: 'https://www.chartjs.org/img/chartjs-logo.svg' },
+      { name: 'HTML5', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg' },
+      { name: 'CSS3', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg' },
       { name: 'Responsive UI Design' },
     ]
   },
@@ -42,6 +45,9 @@ const skillGroups = [
       { name: 'Express', icon: 'https://cdn.worldvectorlogo.com/logos/express-109.svg', invert: true },
       { name: 'MongoDB', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg' },
       { name: 'PostgreSQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg' },
+      { name: 'MySQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg' },
+      { name: 'Firebase', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-plain.svg' },
+      { name: 'Convex', icon: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/webp/convex.webp', rounded: true },
       { name: 'Database Design' },
       { name: 'System Design' },
       { name: 'API Development' },
@@ -146,20 +152,30 @@ const Skills = () => {
                 {group.skills.map((skill) => (
                   <div 
                     key={skill.name}
-                    className="flex items-center gap-3 bg-black/40 backdrop-blur-md border border-white/10 px-4 py-2.5 rounded-2xl hover:bg-white hover:border-white transition-all duration-300 group/skill cursor-default"
+                    className="relative flex items-center justify-center bg-black/40 backdrop-blur-md border border-white/10 px-4 py-3 rounded-2xl hover:bg-white hover:border-white transition-all duration-300 group/skill cursor-default"
                   >
                     {skill.icon ? (
-                      <img 
-                        src={skill.icon} 
-                        alt={skill.name} 
-                        className={`w-5 h-5 md:w-6 md:h-6 object-contain transition-transform duration-300 group-hover/skill:scale-110 ${skill.invert ? 'filter invert brightness-0 contrast-200 group-hover/skill:invert-0 group-hover/skill:contrast-100 group-hover/skill:brightness-0' : ''}`}
-                      />
+                      <>
+                        <img 
+                          src={skill.icon} 
+                          alt={skill.name} 
+                          className={`w-14 h-14 object-contain transition-transform duration-300 group-hover/skill:scale-110 ${skill.invert ? 'filter invert brightness-0 contrast-200 group-hover/skill:invert-0 group-hover/skill:contrast-100 group-hover/skill:brightness-0' : ''}`}
+                        />
+                        {/* Hover Tooltip */}
+                        <div className="absolute -top-12 opacity-0 group-hover/skill:opacity-100 transition-opacity duration-300 pointer-events-none z-50">
+                          <span className="bg-[#111] text-white text-xs font-bold px-3 py-1.5 rounded-lg whitespace-nowrap shadow-xl border border-white/10">
+                            {skill.name}
+                          </span>
+                        </div>
+                      </>
                     ) : (
-                      <div className="w-2 h-2 rounded-full bg-white/20 group-hover/skill:bg-black transition-colors duration-300" />
+                      <>
+                        <div className="w-2 h-2 rounded-full bg-white/20 group-hover/skill:bg-black transition-colors duration-300 mr-3" />
+                        <span className="text-sm font-bold text-white/70 group-hover/skill:text-black transition-colors whitespace-nowrap">
+                          {skill.name}
+                        </span>
+                      </>
                     )}
-                    <span className="text-sm font-bold text-white/70 group-hover/skill:text-black transition-colors whitespace-nowrap">
-                      {skill.name}
-                    </span>
                   </div>
                 ))}
               </div>
