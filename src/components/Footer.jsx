@@ -6,7 +6,7 @@ const Footer = () => {
       {/* Watermark background text */}
       <div className="absolute bottom-0 left-0 w-full pointer-events-none select-none opacity-[0.03] overflow-hidden translate-y-1/4">
         <h2 className="text-[20vw] font-display font-black leading-none whitespace-nowrap text-center">
-          AARYA BALAN
+          AARYA B
         </h2>
       </div>
 
@@ -40,7 +40,7 @@ const Footer = () => {
               A
             </div>
             <span className="text-white font-display font-bold text-lg sm:text-xl tracking-widest uppercase">
-              Balan.
+              Aarya.dev
             </span>
           </div>
 
@@ -67,7 +67,7 @@ const Footer = () => {
 
         {/* Copyright */}
         <div className="mt-10 sm:mt-20 flex flex-col sm:flex-row justify-between items-center text-white/30 text-[10px] sm:text-xs font-mono uppercase tracking-widest gap-2 sm:gap-4">
-          <p>&copy; {new Date().getFullYear()} Aarya Balan. Everything is running smoothly.</p>
+          <p>&copy; {new Date().getFullYear()} Aarya B. Everything is running smoothly.</p>
           <p>Designed to stand out.</p>
         </div>
 

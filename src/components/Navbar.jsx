@@ -53,7 +53,7 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
             <div className="absolute inset-0 border-2 border-white/20 rounded-full scale-150 group-hover:scale-100 transition-transform duration-500" />
           </div>
           <span className="text-white font-display font-bold text-base sm:text-lg tracking-widest uppercase hidden sm:block">
-            Balan<span className="text-orange-500">.</span>
+            Aarya<span className="text-orange-500">.dev</span>
           </span>
         </button>
 

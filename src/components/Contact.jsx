@@ -1,107 +1,120 @@
-import { useState } from 'react'
 import { ArrowRightIcon } from './Icons'
 
-const Contact = () => {
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' })
-  const [submitted, setSubmitted] = useState(false)
+// Minimal, elegant line-art icons for a premium professional aesthetic
+const PhoneIcon = ({ size = 28, className = '' }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+  </svg>
+)
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    setSubmitted(true)
-  }
+const MailIcon = ({ size = 28, className = '' }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <rect x="2" y="4" width="20" height="16" rx="2" />
+    <path d="M22 7l-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+  </svg>
+)
+
+const Contact = () => {
+  const emailAddress = 'aaryabalan2006@gmail.com'
+  const phoneNumber = '+91 98401 23456' // Clean, professional Indian mobile format placeholder
 
   return (
-    <section id="contact" className="bg-[#030303] py-20 sm:py-32 relative overflow-hidden">
-      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] sm:w-[600px] sm:h-[600px] bg-green-500/10 rounded-full blur-[120px] pointer-events-none" />
+    <section 
+      id="contact" 
+      className="py-24 sm:py-32 md:py-40 relative overflow-hidden min-h-screen flex items-center bg-[#030303]"
+    >
+      {/* Subtle background ambient lights to add depth */}
+      <div className="absolute top-1/4 -left-20 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-orange-500/5 rounded-full blur-[100px] sm:blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-1/4 -right-20 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-pink-500/5 rounded-full blur-[100px] sm:blur-[150px] pointer-events-none" />
 
-      <div className="max-w-5xl mx-auto px-5 sm:px-6 relative z-10">
+      <div className="max-w-5xl mx-auto px-5 sm:px-6 relative z-10 w-full">
         
-        <div className="text-center mb-10 sm:mb-20">
-          <p className="text-green-400 text-xs sm:text-sm uppercase tracking-[0.3em] font-bold mb-4 sm:mb-6 font-display">
-            Reach Out
+        {/* Simple & Clean Header */}
+        <div className="text-center mb-16 sm:mb-24">
+          <p className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-pink-500 text-xs sm:text-sm uppercase tracking-[0.3em] font-bold mb-4 font-display">
+            Get in touch
           </p>
-          <h2 className="text-3xl sm:text-5xl md:text-7xl font-display font-black leading-tight tracking-tighter">
-            Send Me A <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-cyan-500">Message.</span>
+          <h2 className="text-4xl sm:text-5xl md:text-7xl font-display font-black leading-tight tracking-tighter text-white">
+            Let's <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500">Connect.</span>
           </h2>
+          <p className="text-white/50 text-sm sm:text-base max-w-md mx-auto mt-4 font-light leading-relaxed">
+            Have a project in mind or want to discuss software engineering opportunities? Reach out directly.
+          </p>
         </div>
 
-        <div className="bg-[#080808] border border-white/10 rounded-[2rem] sm:rounded-[3rem] p-1.5 sm:p-2 overflow-hidden shadow-[0_0_80px_rgba(0,0,0,0.8)]">
-          {/* Terminal header */}
-          <div className="flex items-center gap-2 px-4 sm:px-6 py-3 sm:py-4 bg-white/5 border-b border-white/5 rounded-t-[1.5rem] sm:rounded-t-[2.5rem]">
-            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-red-500/80" />
-            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-yellow-500/80" />
-            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-green-500/80" />
-            <span className="ml-3 text-white/30 text-[10px] sm:text-xs font-mono uppercase tracking-widest">New Message</span>
-          </div>
-
-          <div className="p-5 sm:p-8 md:p-14">
-            {submitted ? (
-              <div className="flex flex-col items-center justify-center py-12 sm:py-20 text-center animate-[fadeIn_0.5s_ease-out]">
-                <div className="w-16 h-16 sm:w-24 sm:h-24 rounded-full bg-green-500/10 border border-green-500/30 flex items-center justify-center mb-6 sm:mb-8 relative">
-                  <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-full bg-green-500 animate-ping opacity-50 absolute" />
-                  <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-full bg-green-500 shadow-[0_0_30px_rgba(34,197,94,0.8)] relative z-10" />
-                </div>
-                <h3 className="text-2xl sm:text-4xl font-display font-black text-white mb-4 tracking-tighter">MESSAGE DELIVERED</h3>
-                <p className="text-base sm:text-xl text-white/50 font-light max-w-md">
-                  Thank you for reaching out. I will read your message and get back to you as soon as possible.
-                </p>
+        {/* Professional 2-Column Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
+          
+          {/* Email Option */}
+          <a
+            href={`mailto:${emailAddress}`}
+            className="group relative flex flex-col justify-between bg-gradient-to-br from-[#120703]/90 via-[#0a0402]/90 to-[#040201]/95 border border-orange-500/10 hover:border-orange-500/30 rounded-[2rem] p-8 sm:p-10 transition-all duration-500 hover:scale-[1.02] shadow-[0_10px_35px_rgba(0,0,0,0.6)] overflow-hidden"
+          >
+            {/* Soft, beautiful colorful underglow behind card on hover */}
+            <div className="absolute -left-10 -top-10 w-32 h-32 bg-orange-500/10 rounded-full blur-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-br from-orange-500/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+            
+            <div>
+              {/* Colorful Icon Container */}
+              <div className="w-14 h-14 rounded-2xl bg-orange-500/15 border border-orange-500/30 text-orange-400 flex items-center justify-center mb-8 sm:mb-12 group-hover:scale-110 transition-transform duration-500">
+                <MailIcon />
               </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-                  <div className="relative group">
-                    <input
-                      type="text"
-                      required
-                      value={formData.name}
-                      onChange={e => setFormData({...formData, name: e.target.value})}
-                      className="w-full bg-transparent border-b border-white/20 text-white text-lg sm:text-2xl py-3 sm:py-4 px-2 focus:outline-none focus:border-green-500 transition-colors peer placeholder-transparent"
-                      placeholder="Name"
-                    />
-                    <label className="absolute left-2 top-3 sm:top-4 text-white/30 text-lg sm:text-2xl font-light transition-all peer-focus:-top-5 peer-focus:text-[10px] peer-focus:text-green-500 peer-focus:font-bold peer-focus:uppercase peer-focus:tracking-widest peer-valid:-top-5 peer-valid:text-[10px] peer-valid:text-white/50 peer-valid:font-bold peer-valid:uppercase peer-valid:tracking-widest cursor-text">
-                      Your Name
-                    </label>
-                  </div>
-                  <div className="relative group">
-                    <input
-                      type="email"
-                      required
-                      value={formData.email}
-                      onChange={e => setFormData({...formData, email: e.target.value})}
-                      className="w-full bg-transparent border-b border-white/20 text-white text-lg sm:text-2xl py-3 sm:py-4 px-2 focus:outline-none focus:border-green-500 transition-colors peer placeholder-transparent"
-                      placeholder="Email"
-                    />
-                    <label className="absolute left-2 top-3 sm:top-4 text-white/30 text-lg sm:text-2xl font-light transition-all peer-focus:-top-5 peer-focus:text-[10px] peer-focus:text-green-500 peer-focus:font-bold peer-focus:uppercase peer-focus:tracking-widest peer-valid:-top-5 peer-valid:text-[10px] peer-valid:text-white/50 peer-valid:font-bold peer-valid:uppercase peer-valid:tracking-widest cursor-text">
-                      Your Email
-                    </label>
-                  </div>
-                </div>
+              
+              <h3 className="text-2xl sm:text-3xl font-display font-bold text-white tracking-tight leading-tight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-orange-200 transition-all duration-500">
+                Send an Email
+              </h3>
+              <p className="text-white/40 text-xs sm:text-sm mt-2 font-light">
+                For roles, proposals, and official inquiries.
+              </p>
+              
+              <p className="text-orange-400 font-mono text-sm sm:text-base mt-6 select-all tracking-tight font-medium">
+                {emailAddress}
+              </p>
+            </div>
 
-                <div className="relative group pt-6 sm:pt-8">
-                  <textarea
-                    required
-                    rows={4}
-                    value={formData.message}
-                    onChange={e => setFormData({...formData, message: e.target.value})}
-                    className="w-full bg-transparent border-b border-white/20 text-white text-lg sm:text-2xl py-3 sm:py-4 px-2 focus:outline-none focus:border-green-500 transition-colors peer placeholder-transparent resize-none"
-                    placeholder="Message"
-                  />
-                  <label className="absolute left-2 top-9 sm:top-12 text-white/30 text-lg sm:text-2xl font-light transition-all peer-focus:-top-2 peer-focus:text-[10px] peer-focus:text-green-500 peer-focus:font-bold peer-focus:uppercase peer-focus:tracking-widest peer-valid:-top-2 peer-valid:text-[10px] peer-valid:text-white/50 peer-valid:font-bold peer-valid:uppercase peer-valid:tracking-widest cursor-text">
-                    What would you like to say?
-                  </label>
-                </div>
+            <div className="mt-12 sm:mt-16 pt-4 border-t border-white/5 flex items-center justify-between text-xs sm:text-sm font-display font-bold uppercase tracking-wider text-white/50 group-hover:text-orange-400 transition-colors duration-300">
+              <span>Write Mail</span>
+              <div className="transform group-hover:translate-x-1.5 transition-transform duration-300">
+                <ArrowRightIcon size={14} />
+              </div>
+            </div>
+          </a>
 
-                <div className="pt-6 sm:pt-10">
-                  <button
-                    type="submit"
-                    className="w-full bg-white hover:bg-green-500 text-black hover:text-white font-display font-black text-xl sm:text-3xl md:text-4xl uppercase tracking-tighter py-5 sm:py-8 rounded-[1.5rem] sm:rounded-[2rem] transition-all duration-300 hover:scale-[1.02] flex items-center justify-center gap-4 sm:gap-6 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_50px_rgba(34,197,94,0.4)]"
-                  >
-                    Send <ArrowRightIcon size={24} />
-                  </button>
-                </div>
-              </form>
-            )}
-          </div>
+          {/* Call Option */}
+          <a
+            href={`tel:${phoneNumber.replace(/\s+/g, '')}`}
+            className="group relative flex flex-col justify-between bg-gradient-to-br from-[#14050b]/90 via-[#0b0306]/90 to-[#050102]/95 border border-pink-500/10 hover:border-pink-500/30 rounded-[2rem] p-8 sm:p-10 transition-all duration-500 hover:scale-[1.02] shadow-[0_10px_35px_rgba(0,0,0,0.6)] overflow-hidden"
+          >
+            {/* Soft, beautiful colorful underglow behind card on hover */}
+            <div className="absolute -left-10 -top-10 w-32 h-32 bg-pink-500/10 rounded-full blur-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-br from-pink-500/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+            <div>
+              {/* Colorful Icon Container */}
+              <div className="w-14 h-14 rounded-2xl bg-pink-500/15 border border-pink-500/30 text-pink-400 flex items-center justify-center mb-8 sm:mb-12 group-hover:scale-110 transition-transform duration-500">
+                <PhoneIcon />
+              </div>
+
+              <h3 className="text-2xl sm:text-3xl font-display font-bold text-white tracking-tight leading-tight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-pink-200 transition-all duration-500">
+                Direct Call
+              </h3>
+              <p className="text-white/40 text-xs sm:text-sm mt-2 font-light">
+                For quick consultations and immediate discussions.
+              </p>
+              
+              <p className="text-pink-400 font-mono text-sm sm:text-base mt-6 select-all tracking-tight font-medium">
+                {phoneNumber}
+              </p>
+            </div>
+
+            <div className="mt-12 sm:mt-16 pt-4 border-t border-white/5 flex items-center justify-between text-xs sm:text-sm font-display font-bold uppercase tracking-wider text-white/50 group-hover:text-pink-400 transition-colors duration-300">
+              <span>Initiate Call</span>
+              <div className="transform group-hover:translate-x-1.5 transition-transform duration-300">
+                <ArrowRightIcon size={14} />
+              </div>
+            </div>
+          </a>
+
         </div>
 
       </div>

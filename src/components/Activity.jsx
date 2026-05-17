@@ -241,9 +241,9 @@ const Activity = () => {
                 </div>
                 <div>
                   <h3 className="text-2xl font-display font-bold text-white flex items-center gap-3">
-                    Global Surveillance
+                    Popularity
                     <span className="text-xs bg-white/5 border border-white/10 px-2 py-0.5 rounded-full text-white/40 uppercase tracking-widest font-mono flex items-center gap-2">
-                      Simulated
+                      Global Views
                     </span>
                   </h3>
                   <p className="text-white/40 text-sm font-mono tracking-widest uppercase">Portfolio & Profile Views</p>

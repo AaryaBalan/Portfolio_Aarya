@@ -115,7 +115,7 @@ const Hero = ({ setCurrentPage }) => {
                   <div className="w-full h-full rounded-full overflow-hidden bg-[#050505]">
                     <img
                       src="/src/assets/hero.jpg"
-                      alt="Aarya Balan"
+                      alt="Aarya B"
                       className="w-full h-full object-cover scale-[1.05] group-hover:scale-100 transition-transform duration-700 select-none pointer-events-none"
                     />
                   </div>
@@ -126,7 +126,7 @@ const Hero = ({ setCurrentPage }) => {
                 </div>
               </div>
 
-              <h2 className="text-2xl font-display font-black text-white tracking-tight">Aarya Balan</h2>
+              <h2 className="text-2xl font-display font-black text-white tracking-tight">Aarya B</h2>
               <p className="text-orange-400/90 text-[10px] font-bold uppercase tracking-[0.2em] mt-2 text-center">Full-Stack Engineer</p>
               <p className="text-white/40 text-center text-xs mt-3 leading-relaxed px-2">
                 Building end-to-end software from architecture to deployment.
@@ -150,11 +150,11 @@ const Hero = ({ setCurrentPage }) => {
         <div className="mt-10 lg:hidden flex items-center gap-4 bg-white/[0.03] border border-white/10 rounded-2xl px-5 py-4 animate-[fadeIn_1s_ease-out_1s_both]">
           <div className="w-14 h-14 rounded-full flex-shrink-0 bg-gradient-to-br from-orange-500 to-purple-600 p-0.5">
             <div className="w-full h-full rounded-full overflow-hidden bg-[#050505]">
-              <img src="/src/assets/hero.jpg" alt="Aarya Balan" className="w-full h-full object-cover select-none pointer-events-none" />
+              <img src="/src/assets/hero.jpg" alt="Aarya B" className="w-full h-full object-cover select-none pointer-events-none" />
             </div>
           </div>
           <div className="min-w-0">
-            <p className="font-display font-black text-white text-base leading-none">Aarya Balan</p>
+            <p className="font-display font-black text-white text-base leading-none">Aarya B</p>
             <p className="text-orange-400 text-[10px] font-bold uppercase tracking-[0.15em] mt-1">Full-Stack Engineer</p>
           </div>
           <div className="ml-auto flex-shrink-0">
