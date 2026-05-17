@@ -4,10 +4,19 @@ import { ArrowRightIcon } from './Icons'
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' })
   const [submitted, setSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    setSubmitted(true)
+    setIsSubmitting(true)
+
+    // Fallback: FormSubmit.co is currently experiencing a server outage (522 Timed Out).
+    // So we use a mailto: link to ensure users can still contact you securely.
+    setTimeout(() => {
+      window.location.href = `mailto:aaryabalan2006@gmail.com?subject=Portfolio Contact from ${encodeURIComponent(formData.name)}&body=${encodeURIComponent(formData.message + "\n\nReply to: " + formData.email)}`;
+      setSubmitted(true);
+      setIsSubmitting(false);
+    }, 800);
   }
 
   return (
@@ -15,7 +24,7 @@ const Contact = () => {
       <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-green-500/10 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-5xl mx-auto px-6 relative z-10">
-        
+
         <div className="text-center mb-20">
           <p className="text-green-400 text-sm uppercase tracking-[0.3em] font-bold mb-6 font-display">
             Reach Out
@@ -46,31 +55,33 @@ const Contact = () => {
                 </p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-8">
+              <form onSubmit={handleSubmit} className="space-y-8 relative z-20">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="relative group">
                     <input
                       type="text"
+                      name="name"
                       required
                       value={formData.name}
-                      onChange={e => setFormData({...formData, name: e.target.value})}
-                      className="w-full bg-transparent border-b border-white/20 text-white text-xl md:text-2xl py-4 px-2 focus:outline-none focus:border-green-500 transition-colors peer placeholder-transparent"
+                      onChange={e => setFormData({ ...formData, name: e.target.value })}
+                      className="w-full bg-transparent border-b border-white/20 text-white text-xl md:text-2xl py-4 px-2 focus:outline-none focus:border-green-500 transition-colors peer placeholder-transparent relative z-10"
                       placeholder="Name"
                     />
-                    <label className="absolute left-2 top-4 text-white/30 text-xl md:text-2xl font-light transition-all peer-focus:-top-6 peer-focus:text-xs peer-focus:text-green-500 peer-focus:font-bold peer-focus:uppercase peer-focus:tracking-widest peer-valid:-top-6 peer-valid:text-xs peer-valid:text-white/50 peer-valid:font-bold peer-valid:uppercase peer-valid:tracking-widest cursor-text">
+                    <label className="absolute left-2 top-4 text-white/30 text-xl md:text-2xl font-light transition-all peer-focus:-top-6 peer-focus:text-xs peer-focus:text-green-500 peer-focus:font-bold peer-focus:uppercase peer-focus:tracking-widest peer-valid:-top-6 peer-valid:text-xs peer-valid:text-white/50 peer-valid:font-bold peer-valid:uppercase peer-valid:tracking-widest pointer-events-none z-0">
                       Your Name
                     </label>
                   </div>
                   <div className="relative group">
                     <input
                       type="email"
+                      name="email"
                       required
                       value={formData.email}
-                      onChange={e => setFormData({...formData, email: e.target.value})}
-                      className="w-full bg-transparent border-b border-white/20 text-white text-xl md:text-2xl py-4 px-2 focus:outline-none focus:border-green-500 transition-colors peer placeholder-transparent"
+                      onChange={e => setFormData({ ...formData, email: e.target.value })}
+                      className="w-full bg-transparent border-b border-white/20 text-white text-xl md:text-2xl py-4 px-2 focus:outline-none focus:border-green-500 transition-colors peer placeholder-transparent relative z-10"
                       placeholder="Email"
                     />
-                    <label className="absolute left-2 top-4 text-white/30 text-xl md:text-2xl font-light transition-all peer-focus:-top-6 peer-focus:text-xs peer-focus:text-green-500 peer-focus:font-bold peer-focus:uppercase peer-focus:tracking-widest peer-valid:-top-6 peer-valid:text-xs peer-valid:text-white/50 peer-valid:font-bold peer-valid:uppercase peer-valid:tracking-widest cursor-text">
+                    <label className="absolute left-2 top-4 text-white/30 text-xl md:text-2xl font-light transition-all peer-focus:-top-6 peer-focus:text-xs peer-focus:text-green-500 peer-focus:font-bold peer-focus:uppercase peer-focus:tracking-widest peer-valid:-top-6 peer-valid:text-xs peer-valid:text-white/50 peer-valid:font-bold peer-valid:uppercase peer-valid:tracking-widest pointer-events-none z-0">
                       Your Email
                     </label>
                   </div>
@@ -78,14 +89,15 @@ const Contact = () => {
 
                 <div className="relative group pt-8">
                   <textarea
+                    name="message"
                     required
                     rows={4}
                     value={formData.message}
-                    onChange={e => setFormData({...formData, message: e.target.value})}
-                    className="w-full bg-transparent border-b border-white/20 text-white text-xl md:text-2xl py-4 px-2 focus:outline-none focus:border-green-500 transition-colors peer placeholder-transparent resize-none"
+                    onChange={e => setFormData({ ...formData, message: e.target.value })}
+                    className="w-full bg-transparent border-b border-white/20 text-white text-xl md:text-2xl py-4 px-2 focus:outline-none focus:border-green-500 transition-colors peer placeholder-transparent resize-none relative z-10"
                     placeholder="Message"
                   />
-                  <label className="absolute left-2 top-12 text-white/30 text-xl md:text-2xl font-light transition-all peer-focus:-top-2 peer-focus:text-xs peer-focus:text-green-500 peer-focus:font-bold peer-focus:uppercase peer-focus:tracking-widest peer-valid:-top-2 peer-valid:text-xs peer-valid:text-white/50 peer-valid:font-bold peer-valid:uppercase peer-valid:tracking-widest cursor-text">
+                  <label className="absolute left-2 top-12 text-white/30 text-xl md:text-2xl font-light transition-all peer-focus:-top-2 peer-focus:text-xs peer-focus:text-green-500 peer-focus:font-bold peer-focus:uppercase peer-focus:tracking-widest peer-valid:-top-2 peer-valid:text-xs peer-valid:text-white/50 peer-valid:font-bold peer-valid:uppercase peer-valid:tracking-widest pointer-events-none z-0">
                     What would you like to say?
                   </label>
                 </div>
@@ -93,9 +105,10 @@ const Contact = () => {
                 <div className="pt-10">
                   <button
                     type="submit"
-                    className="w-full bg-white hover:bg-green-500 text-black hover:text-white font-display font-black text-2xl md:text-4xl uppercase tracking-tighter py-8 rounded-[2rem] transition-all duration-300 hover:scale-[1.02] flex items-center justify-center gap-6 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_50px_rgba(34,197,94,0.4)]"
+                    disabled={isSubmitting}
+                    className="w-full bg-white hover:bg-green-500 text-black hover:text-white font-display font-black text-2xl md:text-4xl uppercase tracking-tighter py-8 rounded-[2rem] transition-all duration-300 hover:scale-[1.02] flex items-center justify-center gap-6 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_50px_rgba(34,197,94,0.4)] disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    Send <ArrowRightIcon size={32} />
+                    {isSubmitting ? 'Sending...' : 'Send'} <ArrowRightIcon size={32} />
                   </button>
                 </div>
               </form>

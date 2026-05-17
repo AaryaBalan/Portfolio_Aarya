@@ -1,4 +1,4 @@
-import { GitHubIcon, LinkedInIcon, MailIcon, ArrowRightIcon } from './Icons'
+import { GitHubIcon, LinkedInIcon, MailIcon, ArrowRightIcon, CodeIcon } from './Icons'
 
 const Footer = () => {
   return (
@@ -19,7 +19,7 @@ const Footer = () => {
             </h2>
           </div>
           
-          <a href="mailto:aarya@example.com" className="w-32 h-32 md:w-48 md:h-48 rounded-full bg-white text-black flex items-center justify-center hover:bg-orange-500 hover:text-white transition-all duration-500 hover:scale-110 group shadow-[0_0_50px_rgba(255,255,255,0.1)] hover:shadow-[0_0_80px_rgba(249,115,22,0.4)]">
+          <a href="mailto:aaryabalan2006@gmail.com" className="w-32 h-32 md:w-48 md:h-48 rounded-full bg-white text-black flex items-center justify-center hover:bg-orange-500 hover:text-white transition-all duration-500 hover:scale-110 group shadow-[0_0_50px_rgba(255,255,255,0.1)] hover:shadow-[0_0_80px_rgba(249,115,22,0.4)]">
             <div className="flex flex-col items-center gap-2 transform group-hover:rotate-45 transition-transform duration-500">
               <ArrowRightIcon size={48} className="-rotate-45 group-hover:rotate-0 transition-transform duration-500" />
             </div>
@@ -39,13 +39,16 @@ const Footer = () => {
 
           <div className="flex items-center gap-8">
             {[
-              { label: 'My Work', icon: <GitHubIcon size={24} />, href: '#' },
-              { label: 'My Network', icon: <LinkedInIcon size={24} />, href: '#' },
-              { label: 'Send Email', icon: <MailIcon size={24} />, href: 'mailto:aarya@example.com' },
+              { label: 'GitHub', icon: <GitHubIcon size={24} />, href: 'https://github.com/AaryaBalan', external: true },
+              { label: 'LinkedIn', icon: <LinkedInIcon size={24} />, href: 'https://www.linkedin.com/in/aaryabalan/', external: true },
+              { label: 'LeetCode', icon: <CodeIcon size={24} />, href: 'https://leetcode.com/u/_aarya_/', external: true },
+              { label: 'Send Email', icon: <MailIcon size={24} />, href: 'mailto:aaryabalan2006@gmail.com', external: false },
             ].map(link => (
               <a
                 key={link.label}
                 href={link.href}
+                target={link.external ? "_blank" : undefined}
+                rel={link.external ? "noopener noreferrer" : undefined}
                 aria-label={link.label}
                 className="text-white/40 hover:text-white transition-all duration-300 hover:scale-125 transform"
               >

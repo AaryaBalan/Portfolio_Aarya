@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { ArrowRightIcon, DownloadIcon, SparkleIcon, GitHubIcon, LinkedInIcon, InstagramIcon } from './Icons'
+import { ArrowRightIcon, DownloadIcon, SparkleIcon, GitHubIcon, LinkedInIcon, InstagramIcon, CodeIcon } from './Icons'
 
-const Hero = () => {
+const Hero = ({ setCurrentPage }) => {
   const [mouse, setMouse] = useState({ x: 0, y: 0 })
 
   const handleMouseMove = (e) => {
@@ -12,8 +12,8 @@ const Hero = () => {
   const rotateY = -(mouse.x - window.innerWidth / 2) / 30
 
   return (
-    <section 
-      id="home" 
+    <section
+      id="home"
       className="min-h-screen bg-[#030303] flex items-center relative overflow-hidden pt-20"
       onMouseMove={handleMouseMove}
     >
@@ -23,7 +23,7 @@ const Hero = () => {
         </h1>
       </div>
 
-      <div 
+      <div
         className="absolute inset-0 pointer-events-none opacity-60 transition-opacity duration-300 mix-blend-screen"
         style={{
           background: `radial-gradient(circle 600px at ${mouse.x}px ${mouse.y}px, rgba(249,115,22,0.12), transparent 80%)`
@@ -31,9 +31,9 @@ const Hero = () => {
       />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 w-full grid lg:grid-cols-12 gap-12 items-center">
-        
+
         <div className="lg:col-span-7 space-y-8 relative">
-          
+
           <div className="inline-block overflow-hidden animate-[fadeIn_1s_ease-out_0.2s_both]">
             <span className="inline-flex items-center gap-3 border border-white/10 bg-black/50 backdrop-blur-md rounded-full px-5 py-2.5">
               <span className="w-2 h-2 bg-orange-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(249,115,22,0.8)]" />
@@ -54,19 +54,23 @@ const Hero = () => {
           </p>
 
           <div className="flex flex-wrap gap-5 pt-4 animate-[fadeIn_1s_ease-out_0.8s_both]">
-            <a href="#projects" className="relative inline-flex group overflow-hidden rounded-full p-[1px]">
+            <button
+              onClick={() => setCurrentPage?.('projects')}
+              className="relative inline-flex group overflow-hidden rounded-full p-[1px]"
+            >
               <span className="absolute inset-0 bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 rounded-full opacity-70 group-hover:opacity-100 animate-[spin_3s_linear_infinite]" />
               <span className="relative inline-flex items-center justify-center gap-3 bg-black px-8 py-4.5 rounded-full text-sm font-bold uppercase tracking-[0.15em] font-display text-white transition-all duration-300 group-hover:bg-black/40 backdrop-blur-md">
                 See My Work <ArrowRightIcon size={16} />
               </span>
-            </a>
-            
+            </button>
+
             <div className="flex items-center gap-6 pl-4">
               {[
-                { label: 'GitHub', icon: <GitHubIcon size={20} /> },
-                { label: 'LinkedIn', icon: <LinkedInIcon size={20} /> },
+                { label: 'GitHub', icon: <GitHubIcon size={20} />, href: 'https://github.com/AaryaBalan' },
+                { label: 'LinkedIn', icon: <LinkedInIcon size={20} />, href: 'https://www.linkedin.com/in/aaryabalan/' },
+                { label: 'LeetCode', icon: <CodeIcon size={20} />, href: 'https://leetcode.com/u/_aarya_/' },
               ].map(s => (
-                <a key={s.label} href="#" aria-label={s.label} className="text-white/30 hover:text-white transition-all duration-300 hover:scale-125 transform">
+                <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label} className="text-white/30 hover:text-white transition-all duration-300 hover:scale-125 transform">
                   {s.icon}
                 </a>
               ))}
@@ -75,7 +79,7 @@ const Hero = () => {
         </div>
 
         <div className="lg:col-span-5 h-[600px] hidden lg:flex items-center justify-center perspective-1000 animate-[fadeIn_1.5s_ease-out_1s_both]">
-          <div 
+          <div
             className="w-[340px] h-[460px] bg-white/[0.02] border border-white/10 rounded-[2.5rem] backdrop-blur-3xl transform-style-3d transition-transform duration-300 ease-out flex flex-col items-center p-10 shadow-[0_0_80px_rgba(0,0,0,0.8)] relative"
             style={{
               transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`
@@ -89,13 +93,13 @@ const Hero = () => {
               <div className="absolute -inset-4 bg-gradient-to-br from-orange-500 to-purple-600 rounded-full blur-xl opacity-30 group-hover:opacity-60 transition-opacity duration-700" />
               <div className="absolute -inset-8 border border-white/10 rounded-full animate-[spin_15s_linear_infinite] border-dashed" />
               <div className="absolute -inset-12 border border-white/5 rounded-full animate-[spin_20s_linear_infinite_reverse]" />
-              
+
               {/* Profile Image Container */}
               <div className="relative w-full h-full rounded-full p-1 bg-gradient-to-br from-orange-500 to-purple-600 shadow-[0_0_40px_rgba(0,0,0,0.8)]">
                 <div className="w-full h-full rounded-full overflow-hidden bg-[#050505] relative">
-                  <img 
-                    src="/src/assets/hero.jpg" 
-                    alt="Aarya Balan" 
+                  <img
+                    src="/src/assets/hero.jpg"
+                    alt="Aarya Balan"
                     className="w-full h-full object-cover transform scale-[1.05] group-hover:scale-100 transition-transform duration-700 select-none pointer-events-none"
                   />
                   {/* Subtle inner glass reflection */}

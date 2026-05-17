@@ -20,9 +20,9 @@ const CustomCursor = () => {
       setPos({ x: e.clientX, y: e.clientY })
       const target = e.target
       // Detect if hovering over clickable elements
-      const isClickable = 
-        window.getComputedStyle(target).cursor === 'pointer' || 
-        target.tagName.toLowerCase() === 'a' || 
+      const isClickable =
+        window.getComputedStyle(target).cursor === 'pointer' ||
+        target.tagName.toLowerCase() === 'a' ||
         target.tagName.toLowerCase() === 'button' ||
         target.closest('a') ||
         target.closest('button')
@@ -36,12 +36,12 @@ const CustomCursor = () => {
   return (
     <>
       {/* Inner Dot */}
-      <div 
+      <div
         className="fixed top-0 left-0 w-3 h-3 bg-orange-500 rounded-full mix-blend-difference pointer-events-none z-[10000] transition-transform duration-75 ease-out"
         style={{ transform: `translate3d(${pos.x - 6}px, ${pos.y - 6}px, 0) scale(${isPointer ? 2.5 : 1})` }}
       />
       {/* Outer Ring */}
-      <div 
+      <div
         className={`fixed top-0 left-0 w-12 h-12 border border-orange-500/50 rounded-full pointer-events-none z-[9999] transition-transform duration-300 ease-out ${isPointer ? 'bg-orange-500/10' : ''}`}
         style={{ transform: `translate3d(${pos.x - 24}px, ${pos.y - 24}px, 0) scale(${isPointer ? 1.5 : 1})` }}
       />
@@ -51,32 +51,75 @@ const CustomCursor = () => {
 
 const App = () => {
   const [unlocked, setUnlocked] = useState(false)
+  const [currentPage, setCurrentPage] = useState('home')
+  const [isTransitioning, setIsTransitioning] = useState(false)
+
+  const handlePageChange = (page) => {
+    if (page === currentPage) return;
+    setIsTransitioning(true)
+    setTimeout(() => {
+      setCurrentPage(page)
+      window.scrollTo(0, 0)
+      setIsTransitioning(false)
+    }, 400) // Match fade out duration
+  }
+
+  const renderPage = () => {
+    switch (currentPage) {
+      case 'home':
+        return <Hero setCurrentPage={handlePageChange} />;
+      case 'about':
+        return <About />;
+      case 'projects':
+        return <Projects />;
+      case 'skills':
+        return (
+          <>
+            <Skills />
+            <Activity />
+          </>
+        );
+      case 'experience':
+        return (
+          <>
+            <Experience />
+            <Testimonials />
+          </>
+        );
+      case 'contact':
+        return <Contact />;
+      default:
+        return <Hero setCurrentPage={handlePageChange} />;
+    }
+  }
 
   return (
-    <div className="bg-[#030303] min-h-screen text-white overflow-hidden relative selection:bg-orange-500/30 selection:text-white">
+    <div className="bg-[#030303] min-h-screen text-white overflow-x-hidden relative selection:bg-orange-500/30 selection:text-white flex flex-col">
       {/* Global Cinematic Noise Overlay */}
       <div className="bg-noise" />
-      
+
       {/* Custom Mouse Cursor */}
       <div className="hidden lg:block">
         <CustomCursor />
       </div>
-      
+
       {!unlocked ? (
         <PasswordGate onUnlock={() => setUnlocked(true)} />
       ) : (
-        <div className="relative z-10 animate-[fadeIn_1s_ease-out]">
-          <Navbar />
-          <Hero />
-          <About />
-          <Projects />
-          <Skills />
-          <Activity />
-          <Experience />
-          <Testimonials />
-          <Contact />
-          <Footer />
-        </div>
+        <>
+          {/* Global Navbar */}
+          <Navbar currentPage={currentPage} setCurrentPage={handlePageChange} />
+
+          {/* Main Page Content with Page Transitions */}
+          <main className={`relative z-10 flex-grow flex flex-col transition-all duration-500 ease-in-out ${isTransitioning ? 'opacity-0 scale-[0.98] blur-sm translate-y-4' : 'opacity-100 scale-100 blur-0 translate-y-0'}`}>
+            {renderPage()}
+
+            {/* Global Footer */}
+            <div className="mt-auto">
+              <Footer />
+            </div>
+          </main>
+        </>
       )}
 
       <style>{`

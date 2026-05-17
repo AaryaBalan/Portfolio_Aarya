@@ -46,7 +46,7 @@ const projects = [
 const Projects = () => {
   return (
     <section id="projects" className="bg-[#030303] py-32 relative overflow-hidden">
-      
+
       {/* Infinite scrolling text background */}
       <div className="absolute top-1/2 left-0 w-full -translate-y-1/2 opacity-[0.03] pointer-events-none select-none flex flex-col gap-8 transform -rotate-6 scale-125">
         <div className="whitespace-nowrap animate-marquee">
@@ -60,11 +60,11 @@ const Projects = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        
+
         <div className="flex flex-col md:flex-row justify-between items-end mb-20">
           <div>
             <h2 className="text-5xl md:text-7xl font-display font-black leading-tight tracking-tighter">
-              Featured <br/>
+              Featured <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">Creations.</span>
             </h2>
           </div>
@@ -81,9 +81,9 @@ const Projects = () => {
             >
               {/* Hover glow effect */}
               <div className={`absolute inset-0 bg-gradient-to-br ${p.color} opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none`} />
-              
+
               <div className="relative z-10 h-full flex flex-col">
-                
+
                 <div className="flex justify-between items-start mb-16">
                   <div>
                     <div className="text-white/30 text-sm font-semibold uppercase tracking-[0.2em] mb-3">{p.subtitle}</div>
@@ -91,7 +91,7 @@ const Projects = () => {
                       {p.title}
                     </h3>
                   </div>
-                  
+
                   {p.link !== '#' && (
                     <a href={p.link} target="_blank" rel="noopener noreferrer" className="w-16 h-16 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/50 group-hover:bg-white group-hover:text-black group-hover:scale-110 transition-all duration-300 flex-shrink-0 ml-4">
                       <ExternalLinkIcon size={24} />
@@ -111,7 +111,7 @@ const Projects = () => {
                       </span>
                     ))}
                   </div>
-                  
+
                   {p.github !== '#' && (
                     <a href={p.github} target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-white/40 hover:text-white uppercase tracking-widest flex items-center gap-2 transition-colors whitespace-nowrap">
                       <CodeIcon size={16} /> Source Code

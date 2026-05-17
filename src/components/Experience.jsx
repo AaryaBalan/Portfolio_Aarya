@@ -46,9 +46,9 @@ const experience = [
 const Experience = () => {
   return (
     <section id="experience" className="bg-[#030303] py-32 relative overflow-hidden">
-      
+
       {/* Dynamic Background Noise */}
-      <div 
+      <div
         className="absolute inset-0 opacity-[0.02] pointer-events-none"
         style={{
           backgroundImage: 'linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)',
@@ -57,7 +57,7 @@ const Experience = () => {
       />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        
+
         <div className="text-center mb-40">
           <p className="text-white/40 text-sm uppercase tracking-[0.4em] font-bold mb-6 font-display">
             The Journey
@@ -68,7 +68,7 @@ const Experience = () => {
         </div>
 
         <div className="relative max-w-5xl mx-auto">
-          
+
           {/* Massive Center Glowing Fiber Optic Cable */}
           <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-[2px] bg-white/5 md:-translate-x-1/2">
             <div className="absolute top-0 w-full h-[30%] bg-gradient-to-b from-transparent via-white to-transparent animate-[pulse_3s_ease-in-out_infinite] shadow-[0_0_30px_rgba(255,255,255,0.8)]" />
@@ -79,10 +79,10 @@ const Experience = () => {
               const isEven = i % 2 === 0;
               return (
                 <div key={i} className={`relative flex flex-col md:flex-row items-center ${isEven ? 'md:flex-row-reverse' : ''} group`}>
-                  
+
                   {/* Floating Holographic Node */}
                   <div className="absolute left-8 md:left-1/2 top-0 md:top-1/2 md:-translate-y-1/2 -translate-x-[15px] md:-translate-x-1/2 flex items-center justify-center z-20">
-                    <div 
+                    <div
                       className={`w-8 h-8 rounded-full border-[4px] border-[#030303] bg-gradient-to-br ${exp.color} shadow-2xl transition-all duration-500 group-hover:scale-150 group-hover:animate-pulse`}
                       style={{ boxShadow: `0 0 40px ${exp.glowColor}` }}
                     />
@@ -93,9 +93,9 @@ const Experience = () => {
 
                   {/* Borderless Content Area */}
                   <div className={`w-full md:w-1/2 pl-24 md:pl-0 ${isEven ? 'md:pr-24 text-left md:text-right' : 'md:pl-24 text-left'} relative`}>
-                    
+
                     {/* Massive Background Watermark */}
-                    <div 
+                    <div
                       className={`absolute top-1/2 -translate-y-1/2 ${isEven ? 'right-0' : 'left-0'} text-[5rem] md:text-[8rem] lg:text-[10rem] font-display font-black uppercase text-white/[0.02] whitespace-nowrap pointer-events-none group-hover:text-white/[0.04] transition-colors duration-700 z-0`}
                     >
                       {exp.company}
@@ -103,7 +103,7 @@ const Experience = () => {
 
                     {/* Actual Content */}
                     <div className="relative z-10">
-                      
+
                       <div className={`flex flex-col ${isEven ? 'md:items-end' : 'md:items-start'} mb-6`}>
                         <div className="flex items-center gap-4 mb-4">
                           <BriefcaseIcon size={20} className="text-white/20 group-hover:text-white/80 transition-colors duration-500" />
@@ -111,11 +111,11 @@ const Experience = () => {
                             {exp.period}
                           </span>
                         </div>
-                        
+
                         <p className={`text-sm md:text-base font-bold tracking-[0.3em] uppercase mb-2 text-transparent bg-clip-text bg-gradient-to-r ${exp.color}`}>
                           {exp.company} • {exp.type}
                         </p>
-                        
+
                         <h3 className="text-4xl md:text-6xl font-display font-black text-white leading-tight group-hover:scale-[1.02] transition-transform duration-500 origin-left">
                           {exp.role}
                         </h3>
@@ -123,11 +123,11 @@ const Experience = () => {
 
                       <ul className={`space-y-6 mt-10 flex flex-col ${isEven ? 'md:items-end' : 'md:items-start'}`}>
                         {exp.bullets.map((bullet, j) => (
-                          <li 
-                            key={j} 
+                          <li
+                            key={j}
                             className={`flex items-start gap-4 text-white/50 text-lg md:text-xl leading-relaxed font-light group-hover:text-white/90 transition-colors duration-500 max-w-lg ${isEven ? 'md:flex-row-reverse text-left md:text-right' : 'text-left'}`}
                           >
-                            <span 
+                            <span
                               className={`w-2 h-2 mt-2.5 rounded-full bg-gradient-to-r ${exp.color} flex-shrink-0 opacity-50 group-hover:opacity-100 transition-opacity duration-500`}
                               style={{ boxShadow: `0 0 15px ${exp.glowColor}` }}
                             />
