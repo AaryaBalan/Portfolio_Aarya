@@ -1,14 +1,19 @@
-import { useState } from 'react'
+import { useState, useCallback, useRef } from 'react'
 import { ArrowRightIcon, DownloadIcon, GitHubIcon, LinkedInIcon, LeetCodeIcon } from './Icons'
 import resumePdf from '../assets/Aarya_resume.pdf'
 
 const Hero = ({ setCurrentPage }) => {
   const [mouse, setMouse] = useState({ x: 0, y: 0 })
+  const rafRef = useRef(null)
 
-  const handleMouseMove = (e) => {
+  const handleMouseMove = useCallback((e) => {
     if (window.innerWidth < 1024) return
-    setMouse({ x: e.clientX, y: e.clientY })
-  }
+    if (rafRef.current) return // skip if frame already queued
+    rafRef.current = requestAnimationFrame(() => {
+      setMouse({ x: e.clientX, y: e.clientY })
+      rafRef.current = null
+    })
+  }, [])
 
   const isDesktop = typeof window !== 'undefined' && window.innerWidth >= 1024
   const rotateX = isDesktop ? (mouse.y - window.innerHeight / 2) / 30 : 0
@@ -110,7 +115,7 @@ const Hero = ({ setCurrentPage }) => {
 
               <div className="w-44 h-44 rounded-full mb-8 relative group">
                 <div className="absolute -inset-4 bg-gradient-to-br from-orange-500 to-purple-600 rounded-full blur-xl opacity-30 group-hover:opacity-60 transition-opacity duration-700" />
-                <div className="absolute -inset-8 border border-white/10 rounded-full animate-[spin_15s_linear_infinite] border-dashed" />
+                <div className="absolute -inset-8 border border-white/10 rounded-full animate-[spin_15s_linear_infinite] border-dashed hidden lg:block" style={{ willChange: 'transform' }} />
                 <div className="relative w-full h-full rounded-full p-1 bg-gradient-to-br from-orange-500 to-purple-600 shadow-[0_0_40px_rgba(0,0,0,0.8)]">
                   <div className="w-full h-full rounded-full overflow-hidden bg-[#050505]">
                     <img
