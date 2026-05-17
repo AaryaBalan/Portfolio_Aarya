@@ -1,6 +1,7 @@
 import { useState, useCallback, useRef } from 'react'
 import { ArrowRightIcon, DownloadIcon, GitHubIcon, LinkedInIcon, LeetCodeIcon } from './Icons'
 import resumePdf from '../assets/Aarya_resume.pdf'
+import heroImg from '../assets/hero.jpg'
 
 const Hero = ({ setCurrentPage }) => {
   const [mouse, setMouse] = useState({ x: 0, y: 0 })
@@ -119,7 +120,7 @@ const Hero = ({ setCurrentPage }) => {
                 <div className="relative w-full h-full rounded-full p-1 bg-gradient-to-br from-orange-500 to-purple-600 shadow-[0_0_40px_rgba(0,0,0,0.8)]">
                   <div className="w-full h-full rounded-full overflow-hidden bg-[#050505]">
                     <img
-                      src="/src/assets/hero.jpg"
+                      src={heroImg}
                       alt="Aarya B"
                       className="w-full h-full object-cover scale-[1.05] group-hover:scale-100 transition-transform duration-700 select-none pointer-events-none"
                     />
@@ -155,7 +156,7 @@ const Hero = ({ setCurrentPage }) => {
         <div className="mt-10 lg:hidden flex items-center gap-4 bg-white/[0.03] border border-white/10 rounded-2xl px-5 py-4 animate-[fadeIn_1s_ease-out_1s_both]">
           <div className="w-14 h-14 rounded-full flex-shrink-0 bg-gradient-to-br from-orange-500 to-purple-600 p-0.5">
             <div className="w-full h-full rounded-full overflow-hidden bg-[#050505]">
-              <img src="/src/assets/hero.jpg" alt="Aarya B" className="w-full h-full object-cover select-none pointer-events-none" />
+              <img src={heroImg} alt="Aarya B" className="w-full h-full object-cover select-none pointer-events-none" />
             </div>
           </div>
           <div className="min-w-0">
