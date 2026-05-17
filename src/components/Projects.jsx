@@ -48,11 +48,20 @@ const projects = [
     github: 'https://github.com/AaryaBalan/LetItOut'
   },
   {
+    title: 'WorkFlow',
+    subtitle: 'Productivity Platform',
+    description: 'WorkFlow is an all-in-one productivity platform designed to help users organize tasks, manage time efficiently, and improve daily workflow. With its intuitive interface and powerful productivity tools, users can create dedicated project rooms to collaborate, discuss ideas, and enhance teamwork seamlessly.',
+    tags: ['Productivity', 'Task Management', 'Time Management', 'Team work', 'Note sharing'],
+    color: 'from-yellow-400 to-orange-500',
+    link: 'https://flow-work.vercel.app/',
+    github: 'https://github.com/AaryaBalan/Flow'
+  },
+  {
     title: 'TrackMyVibe',
     subtitle: 'Expressive Mood Tracking Platform',
     description: 'An interactive daily journaling app enabling users to log emotional states with contextual tags. Features a "Memory Lane" algorithm surfacing entries from exactly one year prior.',
     tags: ['React.js', 'Express', 'MongoDB', 'Tailwind CSS'],
-    color: 'from-yellow-400 to-orange-500',
+    color: 'from-purple-400 to-pink-500',
     link: 'https://www.linkedin.com/in/aaryabalan/details/projects/',
     github: 'https://github.com/AaryaBalan/Track_My_Vibe'
   },
