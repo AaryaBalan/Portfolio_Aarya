@@ -8,8 +8,8 @@ const projects = [
     description: 'A social alarm experience where you never wake up alone. Pair with a friend, hit "I\'m Awake", and trigger an instant call. Features shared streaks, leaderboards, and wake-up analytics.',
     tags: ['Social App', 'Real-time', 'AdMob Integration'],
     color: 'from-orange-500 to-pink-500',
-    link: 'https://lnkd.in/gdhQEghu', 
-    github: 'https://lnkd.in/gXTsUwJz'
+    link: 'https://www.youtube.com/watch?v=pam_hI4dpRw', 
+    github: 'https://github.com/AaryaBalan/WakeupBuddy'
   },
   {
     title: 'Dayable',
@@ -17,8 +17,8 @@ const projects = [
     description: 'A calm, minimal space focused on your day, not your status. Share simple daily moments, track how your day went, and connect with friends through honest check-ins without endless scrolling.',
     tags: ['Social Media', 'Wellness', 'UI/UX'],
     color: 'from-cyan-500 to-blue-500',
-    link: '#',
-    github: '#'
+    link: 'https://www.linkedin.com/in/aaryabalan/details/projects/',
+    github: 'https://github.com/AaryaBalan/Dayable'
   },
   {
     title: 'Zorphix',
@@ -27,7 +27,7 @@ const projects = [
     tags: ['Event Website', 'College Symposium', 'Interactive'],
     color: 'from-purple-500 to-violet-500',
     link: 'https://www.zorphix.com/',
-    github: '#'
+    github: 'https://github.com/ANAND060218/zorphix-2026'
   },
   {
     title: 'Hacksymmetric',
@@ -36,7 +36,25 @@ const projects = [
     tags: ['Hackathon', 'Registration Portal', 'College Club'],
     color: 'from-green-500 to-emerald-500',
     link: 'https://hacksymmetric.vercel.app/',
-    github: '#'
+    github: 'https://github.com/AaryaBalan/hacksymmetric'
+  },
+  {
+    title: 'LetItOut',
+    subtitle: 'Empathetic Community Platform',
+    description: 'A secure, community-driven application designed for emotional expression and mental wellness support. Users can safely share their thoughts and receive encouragement from a supportive network. The platform features a gamified reputation system, awarding unique badges to contributors who actively uplift and console others.',
+    tags: ['Mental Wellness', 'Community App', 'Gamification'],
+    color: 'from-pink-500 to-rose-500',
+    link: '#',
+    github: 'https://github.com/AaryaBalan/LetItOut'
+  },
+  {
+    title: 'TrackMyVibe',
+    subtitle: 'Expressive Mood Tracking Platform',
+    description: 'An interactive daily journaling application enabling users to log emotional states with contextual tags. Features a "Memory Lane" algorithm surfacing historical entries from exactly one year prior, and engaging micro-animations to reward positive milestones.',
+    tags: ['React.js', 'Express', 'MongoDB', 'Tailwind CSS'],
+    color: 'from-yellow-400 to-orange-500',
+    link: 'https://www.linkedin.com/in/aaryabalan/details/projects/',
+    github: 'https://github.com/AaryaBalan/Track_My_Vibe'
   },
 ]
 

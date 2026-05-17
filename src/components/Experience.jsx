@@ -41,6 +41,19 @@ const experience = [
       'Built a strong foundation in modern web development workflows and API architecture.'
     ],
   },
+  {
+    role: 'Event Organizer & Speaker',
+    company: 'Campus Events',
+    period: '2025 – 2026',
+    type: 'Management & Speaking',
+    color: 'from-blue-500 to-indigo-500',
+    glowColor: 'rgba(59,130,246,0.5)', 
+    bullets: [
+      'Orchestrated operations for a premier technology symposium (TechFiesta 25), scaling attendance to over 3,000 participants while driving strategic sponsorship acquisition.',
+      'Delivered engaging keynotes to an expansive junior audience (Catapult 26), articulating strategic vision and fostering active community participation.',
+      'Acted as a core representative of the leadership board, navigating high-stakes logistical challenges through decisive action and cross-functional collaboration.'
+    ],
+  },
 ]
 
 const Experience = () => {
