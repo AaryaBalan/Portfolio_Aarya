@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { ArrowRightIcon, DownloadIcon, GitHubIcon, LinkedInIcon, LeetCodeIcon } from './Icons'
+import resumePdf from '../assets/Aarya_resume.pdf'
 
 const Hero = ({ setCurrentPage }) => {
   const [mouse, setMouse] = useState({ x: 0, y: 0 })
@@ -133,7 +134,9 @@ const Hero = ({ setCurrentPage }) => {
 
               <div className="mt-auto w-full">
                 <a
-                  href="#"
+                  href={resumePdf}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-full bg-white/10 hover:bg-white text-white hover:text-black font-bold py-3.5 rounded-2xl text-xs uppercase tracking-widest transition-all duration-300 text-center flex items-center justify-center gap-2 border border-white/10 hover:border-white"
                 >
                   <DownloadIcon size={13} /> Download Resume

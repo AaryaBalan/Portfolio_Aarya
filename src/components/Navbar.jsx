@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { MenuIcon, XIcon, ArrowRightIcon } from './Icons'
+import resumePdf from '../assets/Aarya_resume.pdf'
 
 const Navbar = ({ currentPage, setCurrentPage }) => {
   const [scrolled, setScrolled] = useState(false)
@@ -76,7 +77,9 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
         {/* Desktop CTA + Mobile Hamburger */}
         <div className="flex items-center gap-3 relative z-50">
           <a
-            href="#"
+            href={resumePdf}
+            target="_blank"
+            rel="noopener noreferrer"
             className="hidden md:flex items-center gap-2 bg-white hover:bg-orange-500 text-black hover:text-white text-xs font-display font-black uppercase tracking-[0.15em] px-5 py-2.5 rounded-full transition-all duration-300 hover:scale-105"
           >
             Resume <ArrowRightIcon size={13} />
@@ -117,7 +120,9 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
             </button>
           ))}
           <a
-            href="#"
+            href={resumePdf}
+            target="_blank"
+            rel="noopener noreferrer"
             className="mt-6 w-full flex items-center justify-center gap-3 bg-orange-500 text-black text-lg font-display font-black uppercase tracking-[0.15em] px-8 py-4 rounded-full transition-all duration-300 hover:scale-105"
             style={{
               transitionDelay: '250ms',
