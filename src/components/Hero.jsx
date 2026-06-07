@@ -1,7 +1,8 @@
 import { useState, useCallback, useRef } from 'react'
 import { ArrowRightIcon, DownloadIcon, GitHubIcon, LinkedInIcon, LeetCodeIcon } from './Icons'
 import resumePdf from '../assets/Aarya_resume.pdf'
-import heroImg from '../assets/hero.jpg'
+import stickerImg from '../assets/aarya_sticker.png'
+
 
 const Hero = ({ setCurrentPage }) => {
   const [mouse, setMouse] = useState({ x: 0, y: 0 })
@@ -9,16 +10,12 @@ const Hero = ({ setCurrentPage }) => {
 
   const handleMouseMove = useCallback((e) => {
     if (window.innerWidth < 1024) return
-    if (rafRef.current) return // skip if frame already queued
+    if (rafRef.current) return
     rafRef.current = requestAnimationFrame(() => {
       setMouse({ x: e.clientX, y: e.clientY })
       rafRef.current = null
     })
   }, [])
-
-  const isDesktop = typeof window !== 'undefined' && window.innerWidth >= 1024
-  const rotateX = isDesktop ? (mouse.y - window.innerHeight / 2) / 30 : 0
-  const rotateY = isDesktop ? -(mouse.x - window.innerWidth / 2) / 30 : 0
 
   return (
     <section
@@ -26,69 +23,95 @@ const Hero = ({ setCurrentPage }) => {
       className="min-h-screen bg-[#030303] flex items-center relative overflow-hidden pt-24 pb-12"
       onMouseMove={handleMouseMove}
     >
-      {/* Background watermark - hidden on mobile for perf */}
-      <div className="absolute inset-0 hidden sm:flex items-center justify-center pointer-events-none overflow-hidden select-none opacity-[0.06]">
-        <span className="text-[20vw] font-display font-black leading-none tracking-tighter text-white whitespace-nowrap">
-          ENGINEER
+      {/* Large watermark text — desktop only */}
+      <div className="absolute inset-0 hidden sm:flex items-center justify-center pointer-events-none overflow-hidden select-none opacity-[0.035]">
+        <span className="text-[22vw] font-display font-black leading-none tracking-tighter text-white whitespace-nowrap">
+          AARYA
         </span>
       </div>
 
-      {/* Glow follow — only on desktop */}
+      {/* Mouse-follow glow — desktop only */}
       <div
-        className="absolute inset-0 pointer-events-none opacity-60 mix-blend-screen hidden lg:block"
+        className="absolute inset-0 pointer-events-none opacity-50 mix-blend-screen hidden lg:block"
         style={{
-          background: `radial-gradient(circle 500px at ${mouse.x}px ${mouse.y}px, rgba(249,115,22,0.10), transparent 80%)`
+          background: `radial-gradient(circle 500px at ${mouse.x}px ${mouse.y}px, rgba(249,115,22,0.08), transparent 80%)`
         }}
       />
 
+      {/* Static ambient glow nodes */}
+      <div className="absolute top-1/4 right-1/4 w-80 h-80 bg-orange-500/5 rounded-full blur-[120px] pointer-events-none hidden lg:block" />
+      <div className="absolute bottom-1/4 right-1/3 w-64 h-64 bg-purple-500/5 rounded-full blur-[100px] pointer-events-none hidden lg:block" />
+
       <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-6 w-full">
-        {/* Mobile: stacked; Desktop: two columns */}
-        <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-0 items-center min-h-[calc(100vh-8rem)]">
 
-          {/* LEFT / main text */}
-          <div className="lg:col-span-7 space-y-6 sm:space-y-8">
+          {/* ── LEFT: text content ── */}
+          <div className="lg:col-span-6 xl:col-span-7 space-y-7 lg:pr-8">
 
-            {/* Availability badge */}
-            <div className="inline-block animate-[fadeIn_1s_ease-out_0.2s_both]">
-              <span className="inline-flex items-center gap-2.5 border border-white/10 bg-black/50 backdrop-blur-md rounded-full px-4 py-2">
-                <span className="w-2 h-2 bg-orange-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(249,115,22,0.8)] flex-shrink-0" />
-                <span className="text-[10px] sm:text-xs uppercase tracking-[0.18em] font-bold text-white/70 font-display leading-none">
-                  Available for software engineering roles
+            {/* Availability pill */}
+            <div className="inline-block animate-[fadeIn_1s_ease-out_0.1s_both]">
+              <span className="inline-flex items-center gap-2.5 border border-white/10 bg-white/[0.03] rounded-full px-4 py-2">
+                <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse shadow-[0_0_6px_rgba(74,222,128,0.8)] flex-shrink-0" />
+                <span className="text-[10px] sm:text-xs uppercase tracking-[0.2em] font-bold text-white/60 font-display leading-none">
+                  Open to opportunities
                 </span>
               </span>
             </div>
 
             {/* Hero headline */}
-            <h1 className="text-[2.8rem] sm:text-5xl md:text-[5.5rem] lg:text-[6rem] font-display font-black leading-[0.92] tracking-tighter animate-[fadeIn_1s_ease-out_0.4s_both]">
-              <span className="block text-white/30">BUILDING</span>
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 pb-1">SCALABLE</span>
-              <span className="block text-white">SOFTWARE.</span>
+            <h1 className="font-display font-black leading-[0.9] tracking-tighter animate-[fadeIn_1s_ease-out_0.25s_both]">
+              <span className="block text-[2.6rem] sm:text-5xl md:text-[5rem] lg:text-[5.5rem] text-white/20">
+                HI, I'M
+              </span>
+              <span className="block text-[3.2rem] sm:text-6xl md:text-[6rem] lg:text-[6.5rem] text-white">
+                AARYA B.
+              </span>
+              <span className="block text-[2rem] sm:text-4xl md:text-[4rem] lg:text-[4.5rem] text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-pink-500 to-purple-500">
+                Full-Stack Engineer
+              </span>
             </h1>
 
             {/* Sub text */}
-            <p className="text-sm sm:text-base md:text-lg text-white/50 max-w-xl font-light leading-relaxed animate-[fadeIn_1s_ease-out_0.6s_both]">
-              Full-Stack Software Engineer passionate about crafting{' '}
-              <strong className="text-white/80 font-medium">robust architectures, responsive frontends, and high-performance databases.</strong>
+            <p className="text-sm sm:text-base text-white/45 max-w-lg font-light leading-relaxed animate-[fadeIn_1s_ease-out_0.4s_both]">
+              Building scalable, production-ready software — from{' '}
+              <span className="text-white/70 font-medium">clean APIs</span> and{' '}
+              <span className="text-white/70 font-medium">responsive interfaces</span> to{' '}
+              <span className="text-white/70 font-medium">optimised databases</span>.
             </p>
 
-            {/* CTAs */}
-            <div className="flex flex-wrap items-center gap-4 pt-2 animate-[fadeIn_1s_ease-out_0.8s_both]">
+
+            {/* CTAs + social */}
+            <div className="flex flex-wrap items-center gap-4 animate-[fadeIn_1s_ease-out_0.6s_both]">
+              {/* Primary CTA */}
               <button
                 onClick={() => setCurrentPage?.('projects')}
                 className="relative inline-flex group overflow-hidden rounded-full p-[1.5px]"
               >
-                <span className="absolute inset-0 bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 rounded-full opacity-70 group-hover:opacity-100 animate-[spin_3s_linear_infinite]" />
-                <span className="relative inline-flex items-center justify-center gap-2 bg-black px-6 sm:px-8 py-3.5 sm:py-4 rounded-full text-xs sm:text-sm font-bold uppercase tracking-[0.12em] font-display text-white transition-all duration-300 group-hover:bg-black/50 backdrop-blur-md">
-                  See My Work <ArrowRightIcon size={14} />
+                <span className="absolute inset-0 bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 rounded-full opacity-80 group-hover:opacity-100 animate-[spin_3s_linear_infinite]" />
+                <span className="relative inline-flex items-center justify-center gap-2 bg-[#030303] px-7 py-3.5 rounded-full text-xs sm:text-sm font-bold uppercase tracking-[0.12em] font-display text-white transition-all duration-300">
+                  View Projects <ArrowRightIcon size={14} />
                 </span>
               </button>
 
+              {/* Resume */}
+              <a
+                href={resumePdf}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-white/50 hover:text-white text-xs font-bold uppercase tracking-widest transition-colors duration-300"
+              >
+                <DownloadIcon size={13} /> Resume
+              </a>
+
+              {/* Divider */}
+              <span className="hidden sm:block w-px h-5 bg-white/10" />
+
               {/* Social links */}
-              <div className="flex items-center gap-5 pl-1">
+              <div className="flex items-center gap-4">
                 {[
-                  { label: 'GitHub', icon: <GitHubIcon size={20} />, href: 'https://github.com/AaryaBalan' },
-                  { label: 'LinkedIn', icon: <LinkedInIcon size={20} />, href: 'https://www.linkedin.com/in/aaryabalan/' },
-                  { label: 'LeetCode', icon: <LeetCodeIcon size={20} />, href: 'https://leetcode.com/u/_aarya_/' },
+                  { label: 'GitHub', icon: <GitHubIcon size={18} />, href: 'https://github.com/AaryaBalan' },
+                  { label: 'LinkedIn', icon: <LinkedInIcon size={18} />, href: 'https://www.linkedin.com/in/aaryabalan/' },
+                  { label: 'LeetCode', icon: <LeetCodeIcon size={18} />, href: 'https://leetcode.com/u/_aarya_/' },
                 ].map(s => (
                   <a
                     key={s.label}
@@ -96,7 +119,7 @@ const Hero = ({ setCurrentPage }) => {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={s.label}
-                    className="text-white/40 hover:text-white transition-all duration-300 hover:scale-125"
+                    className="text-white/30 hover:text-white transition-all duration-300 hover:scale-110"
                   >
                     {s.icon}
                   </a>
@@ -105,69 +128,115 @@ const Hero = ({ setCurrentPage }) => {
             </div>
           </div>
 
-          {/* RIGHT — profile card: only visible lg+ */}
-          <div className="lg:col-span-5 h-[560px] hidden lg:flex items-center justify-center perspective-1000 animate-[fadeIn_1.5s_ease-out_1s_both]">
-            <div
-              className="w-[400px] h-[460px] bg-white/[0.02] border border-white/10 rounded-[2.5rem] backdrop-blur-3xl transform-style-3d transition-transform duration-300 ease-out flex flex-col items-center p-10 shadow-[0_0_80px_rgba(0,0,0,0.8)] relative"
-              style={{ transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg)` }}
-            >
-              <div className="absolute -right-16 -top-16 w-40 h-40 bg-pink-500/20 rounded-full blur-[70px] pointer-events-none" />
-              <div className="absolute -left-16 -bottom-16 w-40 h-40 bg-orange-500/20 rounded-full blur-[70px] pointer-events-none" />
+          {/* ── RIGHT: sticker illustration — desktop only ── */}
+          <div className="lg:col-span-6 xl:col-span-5 hidden lg:flex items-center justify-center relative h-full min-h-[600px]">
 
-              <div className="w-44 h-44 rounded-full mb-8 relative group">
-                <div className="absolute -inset-4 bg-gradient-to-br from-orange-500 to-purple-600 rounded-full blur-xl opacity-30 group-hover:opacity-60 transition-opacity duration-700" />
-                <div className="absolute -inset-8 border border-white/10 rounded-full animate-[spin_15s_linear_infinite] border-dashed hidden lg:block" style={{ willChange: 'transform' }} />
-                <div className="relative w-full h-full rounded-full p-1 bg-gradient-to-br from-orange-500 to-purple-600 shadow-[0_0_40px_rgba(0,0,0,0.8)]">
-                  <div className="w-full h-full rounded-full overflow-hidden bg-[#050505]">
-                    <img
-                      src={heroImg}
-                      alt="Aarya B"
-                      className="w-full h-full object-cover scale-[1.05] group-hover:scale-100 transition-transform duration-700 select-none pointer-events-none"
-                    />
-                  </div>
-                </div>
-                <div className="absolute bottom-3 right-3 z-10 flex h-5 w-5">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
-                  <span className="relative inline-flex rounded-full h-5 w-5 border-4 border-[#0a0a0a] bg-green-500" />
-                </div>
-              </div>
+            {/* Soft ground glow */}
+            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 w-56 h-20 bg-orange-400/10 rounded-full blur-[50px] pointer-events-none" />
+            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 w-40 h-14 bg-white/5 rounded-full blur-[40px] pointer-events-none" />
 
-              <h2 className="text-4xl font-display font-black text-white tracking-tight">Aarya B</h2>
-              <p className="text-orange-400/90 text-xl font-bold uppercase tracking-[0.2em] mt-2 text-center">Full-Stack Engineer</p>
-              <p className="text-white/40 text-center text-s mt-3 leading-relaxed px-2">
-                Building end-to-end software from architecture to deployment.
-              </p>
+            {/* ── Thought bubble coding icons ── */}
 
-              <div className="mt-auto w-full">
-                <a
-                  href={resumePdf}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-2 w-full bg-white/10 hover:bg-white text-white hover:text-black font-bold py-3.5 rounded-2xl text-xs uppercase tracking-widest transition-all duration-300 text-center flex items-center justify-center gap-2 border border-white/10 hover:border-white"
-                >
-                  <DownloadIcon size={13} /> Download Resume
-                </a>
+            {/* React — top left */}
+            <div className="absolute top-[20%] left-[8%] animate-[fadeIn_0.8s_ease-out_1.2s_both]">
+              <div className="relative bg-black/60 border border-white/10 rounded-2xl w-12 h-12 flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-300">
+                {/* bubble tail */}
+                <span className="absolute -bottom-1.5 right-3 w-2 h-2 bg-black/60 border-r border-b border-white/10 rotate-45" />
+                <span className="text-xl">⚛️</span>
               </div>
             </div>
+
+            {/* TypeScript — top right */}
+            <div className="absolute top-[15%] right-[10%] animate-[fadeIn_0.8s_ease-out_1.35s_both]">
+              <div className="relative bg-black/60 border border-blue-500/20 rounded-2xl w-12 h-12 flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-300">
+                <span className="absolute -bottom-1.5 left-3 w-2 h-2 bg-black/60 border-r border-b border-blue-500/20 rotate-45" />
+                <span className="text-xl">🔷</span>
+              </div>
+            </div>
+
+            {/* Code / braces — mid left */}
+            <div className="absolute top-[40%] left-[2%] animate-[fadeIn_0.8s_ease-out_1.5s_both]">
+              <div className="relative bg-black/60 border border-orange-500/20 rounded-2xl w-12 h-12 flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-300">
+                <span className="absolute -bottom-1.5 right-3 w-2 h-2 bg-black/60 border-r border-b border-orange-500/20 rotate-45" />
+                <span className="text-xl">{ }</span>
+              </div>
+            </div>
+
+            {/* Git — mid right */}
+            <div className="absolute top-[38%] right-[4%] animate-[fadeIn_0.8s_ease-out_1.45s_both]">
+              <div className="relative bg-black/60 border border-white/10 rounded-2xl w-12 h-12 flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-300">
+                <span className="absolute -bottom-1.5 left-3 w-2 h-2 bg-black/60 border-r border-b border-white/10 rotate-45" />
+                <span className="text-xl">🌿</span>
+              </div>
+            </div>
+
+            {/* Terminal / CLI — lower left */}
+            <div className="absolute top-[60%] left-[6%] animate-[fadeIn_0.8s_ease-out_1.6s_both]">
+              <div className="relative bg-black/60 border border-green-500/20 rounded-2xl w-12 h-12 flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-300">
+                <span className="absolute -bottom-1.5 right-3 w-2 h-2 bg-black/60 border-r border-b border-green-500/20 rotate-45" />
+                <span className="text-xl">💻</span>
+              </div>
+            </div>
+
+            {/* Node / server — lower right */}
+            <div className="absolute top-[58%] right-[5%] animate-[fadeIn_0.8s_ease-out_1.55s_both]">
+              <div className="relative bg-black/60 border border-white/10 rounded-2xl w-12 h-12 flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-300">
+                <span className="absolute -bottom-1.5 left-3 w-2 h-2 bg-black/60 border-r border-b border-white/10 rotate-45" />
+                <span className="text-xl">🚀</span>
+              </div>
+            </div>
+
+            {/* Database — bottom left */}
+            <div className="absolute top-[76%] left-[14%] animate-[fadeIn_0.8s_ease-out_1.7s_both]">
+              <div className="relative bg-black/60 border border-purple-500/20 rounded-2xl w-12 h-12 flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-300">
+                <span className="absolute -bottom-1.5 right-3 w-2 h-2 bg-black/60 border-r border-b border-purple-500/20 rotate-45" />
+                <span className="text-xl">🗄️</span>
+              </div>
+            </div>
+
+            {/* Coffee / focus — bottom right */}
+            <div className="absolute top-[74%] right-[12%] animate-[fadeIn_0.8s_ease-out_1.65s_both]">
+              <div className="relative bg-black/60 border border-white/10 rounded-2xl w-12 h-12 flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-300">
+                <span className="absolute -bottom-1.5 left-3 w-2 h-2 bg-black/60 border-r border-b border-white/10 rotate-45" />
+                <span className="text-xl">☕</span>
+              </div>
+            </div>
+
+            {/* Status pill floating top-center */}
+            <div className="absolute top-[6%] left-1/2 -translate-x-1/2 animate-[fadeIn_1s_ease-out_1.1s_both]">
+              <div className="flex items-center gap-2 bg-black/60 border border-white/10 rounded-full px-4 py-2 shadow-xl whitespace-nowrap">
+                <span className="relative flex h-2 w-2 flex-shrink-0">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
+                </span>
+                <span className="text-[9px] font-bold uppercase tracking-widest text-white/80">Available Now</span>
+              </div>
+            </div>
+
+            {/* The sticker — vertically centered */}
+            <img
+              src={stickerImg}
+              alt="Aarya B"
+              className="relative z-10 h-[550px] w-auto object-contain select-none pointer-events-none drop-shadow-[0_30px_50px_rgba(0,0,0,0.7)] animate-[fadeIn_1.2s_ease-out_0.8s_both]"
+            />
           </div>
+
         </div>
 
-        {/* Mobile profile mini-card — shown only on sm/md, never lg+ */}
-        <div className="mt-10 lg:hidden flex items-center gap-4 bg-white/[0.03] border border-white/10 rounded-2xl px-5 py-4 animate-[fadeIn_1s_ease-out_1s_both]">
-          <div className="w-14 h-14 rounded-full flex-shrink-0 bg-gradient-to-br from-orange-500 to-purple-600 p-0.5">
-            <div className="w-full h-full rounded-full overflow-hidden bg-[#050505]">
-              <img src={heroImg} alt="Aarya B" className="w-full h-full object-cover select-none pointer-events-none" />
+        {/* ── Mobile sticker strip — shown below headline on small screens ── */}
+        <div className="mt-8 lg:hidden flex items-center gap-5 animate-[fadeIn_1s_ease-out_1s_both]">
+          <img
+            src={stickerImg}
+            alt="Aarya B"
+            className="h-96 w-auto object-contain select-none pointer-events-none drop-shadow-[0_10px_20px_rgba(0,0,0,0.6)]"
+          />
+          <div className="flex flex-col gap-1.5 border-l border-white/10 pl-5">
+            <p className="font-display font-black text-white text-lg leading-none">Aarya B</p>
+            <p className="text-orange-400 text-[10px] font-bold uppercase tracking-[0.15em]">Full-Stack Engineer</p>
+            <div className="flex items-center gap-1.5 mt-1">
+              <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+              <span className="text-[9px] text-white/40 uppercase tracking-wider font-medium">Open to work</span>
             </div>
-          </div>
-          <div className="min-w-0">
-            <p className="font-display font-black text-white text-base leading-none">Aarya B</p>
-            <p className="text-orange-400 text-[10px] font-bold uppercase tracking-[0.15em] mt-1">Full-Stack Engineer</p>
-          </div>
-          <div className="ml-auto flex-shrink-0">
-            <span className="flex h-3 w-3">
-              <span className="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-green-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500" />
-            </span>
           </div>
         </div>
 
