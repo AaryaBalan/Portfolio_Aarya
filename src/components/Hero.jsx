@@ -79,9 +79,45 @@ const Hero = ({ setCurrentPage }) => {
               <span className="text-white/70 font-medium">optimised databases</span>.
             </p>
 
+            {/* Responsive Mobile/Tablet Sticker View (Hidden on Desktop) */}
+            <div className="lg:hidden flex flex-col items-center justify-center my-8 animate-[fadeIn_1s_ease-out_0.5s_both] relative w-full overflow-hidden py-4">
+              {/* Ambient background glow for mobile */}
+              <div className="absolute w-40 h-40 bg-orange-500/10 rounded-full blur-3xl pointer-events-none" />
+              
+              <div className="relative flex items-center justify-center w-64 h-64 sm:w-80 sm:h-80">
+                {/* Simplified floating thought bubbles for mobile/tablet */}
+                <div className="absolute top-[10%] left-[5%] bg-black/60 border border-white/10 rounded-xl w-10 h-10 flex items-center justify-center shadow-md">
+                  <span className="text-base">⚛️</span>
+                </div>
+                <div className="absolute top-[5%] right-[5%] bg-black/60 border border-blue-500/20 rounded-xl w-10 h-10 flex items-center justify-center shadow-md">
+                  <span className="text-base">🔷</span>
+                </div>
+                <div className="absolute bottom-[15%] left-[5%] bg-black/60 border border-orange-500/20 rounded-xl w-10 h-10 flex items-center justify-center shadow-md">
+                  <span className="text-base">💻</span>
+                </div>
+                <div className="absolute bottom-[10%] right-[5%] bg-black/60 border border-purple-500/20 rounded-xl w-10 h-10 flex items-center justify-center shadow-md">
+                  <span className="text-base">🚀</span>
+                </div>
+
+                <img
+                  src={stickerImg}
+                  alt="Aarya B"
+                  className="relative z-10 max-h-full w-auto object-contain select-none pointer-events-none drop-shadow-[0_15px_30px_rgba(0,0,0,0.6)]"
+                />
+              </div>
+
+              {/* Status Indicator under the sticker on mobile */}
+              <div className="mt-4 flex items-center gap-2 bg-black/40 border border-white/5 rounded-full px-3.5 py-1.5 shadow-md">
+                <span className="relative flex h-2 w-2 flex-shrink-0">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
+                </span>
+                <span className="text-[9px] font-bold uppercase tracking-widest text-white/60">Available Now</span>
+              </div>
+            </div>
 
             {/* CTAs + social */}
-            <div className="flex flex-wrap items-center gap-4 animate-[fadeIn_1s_ease-out_0.6s_both]">
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 animate-[fadeIn_1s_ease-out_0.6s_both]">
               {/* Primary CTA */}
               <button
                 onClick={() => setCurrentPage?.('projects')}
@@ -217,28 +253,13 @@ const Hero = ({ setCurrentPage }) => {
             <img
               src={stickerImg}
               alt="Aarya B"
-              className="relative z-10 h-[550px] w-auto object-contain select-none pointer-events-none drop-shadow-[0_30px_50px_rgba(0,0,0,0.7)] animate-[fadeIn_1.2s_ease-out_0.8s_both]"
+              className="relative z-10 h-[500px] w-auto object-contain select-none pointer-events-none drop-shadow-[0_30px_50px_rgba(0,0,0,0.7)] animate-[fadeIn_1.2s_ease-out_0.8s_both]"
             />
           </div>
 
         </div>
 
-        {/* ── Mobile sticker strip — shown below headline on small screens ── */}
-        <div className="mt-8 lg:hidden flex items-center gap-5 animate-[fadeIn_1s_ease-out_1s_both]">
-          <img
-            src={stickerImg}
-            alt="Aarya B"
-            className="h-96 w-auto object-contain select-none pointer-events-none drop-shadow-[0_10px_20px_rgba(0,0,0,0.6)]"
-          />
-          <div className="flex flex-col gap-1.5 border-l border-white/10 pl-5">
-            <p className="font-display font-black text-white text-lg leading-none">Aarya B</p>
-            <p className="text-orange-400 text-[10px] font-bold uppercase tracking-[0.15em]">Full-Stack Engineer</p>
-            <div className="flex items-center gap-1.5 mt-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-              <span className="text-[9px] text-white/40 uppercase tracking-wider font-medium">Open to work</span>
-            </div>
-          </div>
-        </div>
+
 
       </div>
     </section>
